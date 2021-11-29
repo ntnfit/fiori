@@ -1,0 +1,21 @@
+<mvc:View
+	height="100%"
+	controllerName="com.bosch.sbs.sbsfioritemplate.ui.controller.Form"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page
+		id="page"
+		showHeader="true" >
+		<customHeader>
+			<Bar>
+				<contentRight>
+					<Label text="Column Num"/>
+					<Input id="columnEdit" width="150px" submit="commitColumnNum" value="{data>/column}" type="Number"/>
+					<Button id="edit" text="Edit" enabled="true" press="handleEditPress" />
+					<Button id="save" text="Save" type="Emphasized" visible="false" press="handleSavePress" />
+					<Button id="cancel" text="Cancel" visible="false" press="handleCancelPress" />
+				</contentRight>
+			</Bar>
+		</customHeader>
+	</Page>
+</mvc:View>

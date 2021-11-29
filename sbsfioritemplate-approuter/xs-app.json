@@ -1,4 +1,6 @@
 {
+  "welcomeFile": "/comboschsbssbsfioritemplateui",
   "authenticationMethod": "none",
-  "routes": []
+  "routes": [],
+  "sessionTimeout": 1
 }

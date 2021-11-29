@@ -6,7 +6,19 @@ sap.ui.define([
 	Opa5.createPageObjects({
 		onTheAppPage: {
 
-			actions: {},
+			actions: {
+                iClickOnUserMenu: function() {
+                    return this.waitFor({
+                        id: "usermenubtn",
+                        controlType: "sap.m.Button",
+                        viewName: sViewName,
+                        success: function(oControl) {
+                            oControl.firePress();
+                            Opa5.assert.ok(true, "User menu dialog opened");
+                        }
+                    });
+                }
+            },
 
 			assertions: {
 
@@ -19,7 +31,18 @@ sap.ui.define([
 						},
 						errorMessage: "Did not find the " + sViewName + " view"
 					});
-				}
+                },
+                
+                iShouldSeeUserOption: function() {
+                    return this.waitFor({
+                        controlType: "sap.m.ActionSheet",
+                        id: "usermenu",
+                        viewName: sViewName,
+                        success: function(oControl) {
+                            Opa5.assert.ok(true, "The user menu is displayed");
+                        }
+                    });
+                }
 			}
 		}
 	});

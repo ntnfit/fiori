@@ -1,0 +1,51 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:ui="sap.ui.table"
+	xmlns:tnt="sap.f"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<Dialog id="bSettingDialog" title="{i18n>BillingTabSet}" contentWidth="950px" contentHeight="800px">
+		<content>
+			<VBox class="sapUiSmallMargin">
+				<f:SimpleForm id="freezeColumnForm" editable="false" layout="ResponsiveGridLayout" title="{i18n>FreezeColumns}" singleContainerFullSize="false">
+					<f:content>
+						<Input id="inputFreezeColumnNum" width="80%" placeholder="{i18n>FixColumnCount}" tooltip="{i18n>FixColumnCount}"/>
+					</f:content>f
+				</f:SimpleForm>
+				<f:SimpleForm id="filterColumnForm" editable="false" layout="ResponsiveGridLayout" title="{i18n>FilterColumns}" singleContainerFullSize="false" columnsM="1">
+					<f:content>
+						<FlexBox wrap="Wrap" justifyContent="Start">
+							<CheckBox text="ProductName" editable="false" selected="true" width="250px"/>
+							<CheckBox text="ProductId" selected="{store>/bColumns/1/visible}" width="250px"/>
+							<CheckBox text="Quantity" selected="{store>/bColumns/2/visible}" width="250px"/>
+							<CheckBox text="Status" selected="{store>/bColumns/3/visible}" width="250px"/>
+							<CheckBox text="Price" selected="{store>/bColumns/4/visible}" width="250px"/>
+							<CheckBox text="Supplier" selected="{store>/bColumns/5/visible}" width="250px"/>
+							<CheckBox text="Image" selected="{store>/bColumns/6/visible}" width="250px"/>
+							<CheckBox text="Details" selected="{store>/bColumns/7/visible}" width="250px"/>
+							<CheckBox text="HeavyWeight" selected="{store>/bColumns/8/visible}" width="250px"/>
+							<CheckBox text="MainCategory" selected="{store>/bColumns/9/visible}" width="250px"/>
+							<CheckBox text="AdditionalCategories" selected="{store>/bColumns/10/visible}" width="250px"/>
+							<CheckBox text="DeliveryDate" selected="{store>/bColumns/11/visible}" width="250px"/>
+						</FlexBox>
+					</f:content>
+				</f:SimpleForm>
+			</VBox>
+		</content>
+		<buttons>
+			<!--Button text="{i18n>Clear} " type="Accept" icon="sap-icon://accept" press="onbSettingClearButtonPress"/-->
+			<Button text="{i18n>Confirm} " type="Accept" icon="sap-icon://accept" press="onbSettingConfirmButtonPress"/>
+			<Button text="{i18n>Cancel} " type="Reject" icon="sap-icon://sys-cancel" press="onbSettingCancelButtonPress"/>
+		</buttons>
+		<!--beginButton>
+            <Button text="Confirm" type="Accept" icon="sap-icon://accept" press="onbSettingConfirmButtonPress"/>
+		</beginButton>
+		<beginButton>
+            <Button text="Clear" type="Accept" icon="sap-icon://accept" press="onbSettingConfirmButtonPress"/>
+        </beginButton>
+        <endButton>
+            <Button text="Cancel" type="Reject" icon="sap-icon://sys-cancel" press="onbSettingCancelButtonPress"/>
+        </endButton-->
+	</Dialog>
+</core:FragmentDefinition> 

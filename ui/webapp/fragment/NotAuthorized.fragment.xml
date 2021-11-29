@@ -1,0 +1,18 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:ui="sap.ui.table"
+	xmlns:tnt="sap.f"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<Dialog id="NotAuthorizedDialog" title="Not Authorized" type="Message" state="Error" contentWidth="50%" contentHeight="50%">
+		<content>
+			<MessagePage id="errorPage" showHeader="false" text="You have no permission to load this page." enableFormattedText="true" description="Please apply for 'Viewer' Role in IDM." icon="sap-icon://message-warning">
+				<buttons>
+					<Button text="Go to IDM" press="navToIdm"/>
+					<Button text="Reload page" press="reloadPage" />
+				</buttons>
+			</MessagePage>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

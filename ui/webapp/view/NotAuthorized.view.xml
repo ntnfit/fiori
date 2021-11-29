@@ -1,0 +1,15 @@
+<mvc:View controllerName="com.bosch.sbs.sbsfioritemplate.ui.controller.NotAuthorized" 
+    xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<MessagePage id="NotAuthorizedId" showHeader="false"
+				 text="You have no permission to load this page."
+				 enableFormattedText="true"
+				 description="Please apply for 'Valid' Role in IDM."
+				 icon="sap-icon://message-warning">
+		<buttons>
+			<Button text="Go to IDM" press="navToIdm"/>
+			<Button text="Reload page" press="reloadPage" />
+		</buttons>
+	</MessagePage>
+</mvc:View>

@@ -1,0 +1,13 @@
+<mvc:View controllerName="com.bosch.sbs.sbsfioritemplate.ui.controller.CommunicateRight" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+    <Page showHeader="false">
+        <VBox class="sapUiSmallMarginTop sapUiMediumMarginBegin">
+            <HBox>
+                <Text class="sapUiTinyMarginEnd" text="{CommunicateRightModel>/valueA}"></Text>
+                <Text class="sapUiTinyMarginEnd" text="{store>/CommunicateTestData}"></Text>
+                <Text class="sapUiTinyMarginEnd" text="{CommunicateRightModel>/valueB}"></Text>
+                <Text class="sapUiTinyMarginEnd" text="="></Text>
+                <Text class="sapUiTinyMarginEnd" text="{CommunicateRightModel>/result}"></Text>
+            </HBox>
+        </VBox>
+    </Page>
+</mvc:View>

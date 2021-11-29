@@ -1,0 +1,100 @@
+{
+    "columns": [
+        {
+            "id": 0,
+            "name": "ProductName",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": true
+        },
+        {
+            "id": 1,
+            "name": "ProductId",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": true
+        },
+        {
+            "id": 2,
+            "name": "Quantity",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 3,
+            "name": "Status",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 4,
+            "name": "Price",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 5,
+            "name": "Supplier",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 6,
+            "name": "Image",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 7,
+            "name": "Details",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 8,
+            "name": "HeavyWeight",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 9,
+            "name": "MainCategory",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 10,
+            "name": "AdditionalCategories",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 11,
+            "name": "DeliveryDate",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        }
+    ]
+}

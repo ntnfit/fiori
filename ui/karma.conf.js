@@ -22,13 +22,17 @@ module.exports = function(config) {
 			],
 			check: {
 				each: {
-					statements: 100,
-					branches: 100,
-					functions: 100,
-					lines: 100
+					statements: 75,
+					branches: 75,
+					functions: 75,
+					lines: 75
 				}
 			}
 		},
+      	
+      	port: 9876,
+		browserNoActivityTimeout: 100000,
+		browserDisconnectTimeout: 100000,
 		reporters: ["progress", "coverage"],
 
         browsers: ["ChromiumHeadless"],

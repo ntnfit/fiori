@@ -1,0 +1,467 @@
+<mvc:View controllerName="com.bosch.sbs.sbsfioritemplate.ui.controller.BillingPage_Master"
+    xmlns="sap.m"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:ui="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:plugins="sap.ui.table.plugins"
+    xmlns:vm="sap.ui.comp.variants" class="sapUiSizeCompact" height="100%">
+
+    <f:DynamicPage class="BillingMasterClass" busy="{store>/billingMasterPageBusy}" busyIndicatorDelay="0" id="dynamicPage_billing" headerExpanded="{/headerExpanded}">
+        <f:title>
+            <f:DynamicPageTitle class="master_pageTitle" visible="true">
+                <f:heading>
+                    <Title text="{i18n>Billings}({= ${store>/billingListTotalCount}})"></Title>
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                <f:content>
+                    <fb:FilterBar class="filter-bar" id="filterbar" reset="onReset" search="onFilterBarSearch" useToolbar="false" showGoOnFB="true" advancedMode="false">
+                        <fb:filterGroupItems id="filterGroupItems_billing">
+                            <fb:FilterGroupItem groupName="INTERNAL_GROUP" visibleInFilterBar="{store>/bColumns/0/filterVisible}" name="BillingNumber" label="{i18n>BillingNumber}" mandatory="true">
+                                <fb:control>
+                                    <MultiInput id="multiInput" suggestionItemSelected="onSelect_billingNo" showSuggestion="true" valueHelpRequest=".onValueHelpRequested" suggestionRows="{path: '/BillingList', sorter: { path: 'billingNumber' } }">
+                                        <suggestionColumns>
+                                            <Column>
+                                            </Column>
+                                        </suggestionColumns>
+                                        <suggestionRows selected="true">
+                                            <ColumnListItem>
+                                                <cells>
+                                                    <Label text="{billingNumber}" />
+                                                </cells>
+                                            </ColumnListItem>
+                                        </suggestionRows>
+                                    </MultiInput>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="INTERNAL_GROUP" visibleInFilterBar="{store>/bColumns/4/filterVisible}" name="BillingDate" label="{i18n>BILLINGDATE}">
+                                <fb:control>
+                                    <DatePicker displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" id="DatePicker_BillingDate"/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="INTERNAL_GROUP" visibleInFilterBar="{store>/bColumns/1/filterVisible}" name="Status" label="{i18n>STATUS}">
+                                <fb:control>
+                                    <MultiComboBox id="MultiCom_Status" selectedKeys="{store>/ComboBox_selected}" selectionChange="handleSelectionChange" selectionFinish="handleSelectionFinish" items="{
+                                            path: 'store>/ComboBox_InvoiceStatus',
+                                            sorter: { path: 'status' }
+                                        }">
+                                        <core:Item key="{store>key}" text="{store>status}"/>
+                                    </MultiComboBox>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="INTERNAL_GROUP" visibleInFilterBar="{store>/bColumns/6/filterVisible}" name="BuyerName" label="{i18n>BUYERNAME}">
+                                <fb:control>
+                                    <Select id="Select_BuyerName" change="onSelectChange" forceSelection="false" items="{
+                                                    path: 'store>/BillingList'
+                                                }">
+                                        <core:Item key="{store>buyerName}" text="{store>buyerName}"/>
+                                    </Select>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/2/filterVisible}" name="invoiceType" label="{i18n>InvcType}">
+                                <fb:control>
+                                    <Input id="invoiceType" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/3/filterVisible}" name="Category" label="{i18n>Category}">
+                                <fb:control>
+                                    <Input id="Category" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/5/filterVisible}" name="BuyerNumber" label="{i18n>BuyerNumber}">
+                                <fb:control>
+                                    <Input id="BuyerNumber" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/7/filterVisible}" name="BuyerVATNumber" label="{i18n>BuyerVATNumber}">
+                                <fb:control>
+                                    <Input id="BuyerVATNumber" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/8/filterVisible}" name="BuyerAddress" label="{i18n>BuyerAddress}">
+                                <fb:control>
+                                    <Input id="BuyerAddress" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/9/filterVisible}" name="BuyerBankInfo" label="{i18n>BuyerBankInfo}">
+                                <fb:control>
+                                    <Input id="BuyerBankInfo" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/10/filterVisible}" name="Notes" label="{i18n>Notes}">
+                                <fb:control>
+                                    <Input id="Notes" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/11/filterVisible}" name="RedNotifiLetNumber" label="{i18n>RedNotifiLetNumber}">
+                                <fb:control>
+                                    <Input id="RedNotifiLetNumber" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/12/filterVisible}" name="OriInvcCode" label="{i18n>OriInvcCode}">
+                                <fb:control>
+                                    <Input id="OriInvcCode" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/13/filterVisible}" name="OriInvcNumber" label="{i18n>OriInvcNumber}">
+                                <fb:control>
+                                    <Input id="OriInvcNumber" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/17/filterVisible}" name="PayeBankNameAccount" label="{i18n>PayeBankNameAccount}">
+                                <fb:control>
+                                    <Input id="PayeBankNameAccount" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/18/filterVisible}" name="SellerAddress" label="{i18n>SellerAddress}">
+                                <fb:control>
+                                    <Input id="SellerAddress" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/19/filterVisible}" name="MatNumber" label="{i18n>MatNumber}">
+                                <fb:control>
+                                    <Input id="MatNumber" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/20/filterVisible}" name="MatDescription" label="{i18n>MatDescription}">
+                                <fb:control>
+                                    <Input id="MatDescription" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/21/filterVisible}" name="MaltSpec" label="{i18n>MaltSpec}">
+                                <fb:control>
+                                    <Input id="MaltSpec" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/22/filterVisible}" name="UnitMeasure" label="{i18n>UnitMeasure}">
+                                <fb:control>
+                                    <Input id="UnitMeasure" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/23/filterVisible}" name="BilledQuantity" label="{i18n>BilledQuantity}">
+                                <fb:control>
+                                    <Input id="BilledQuantity" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/24/filterVisible}" name="TotalAmount" label="{i18n>TotalAmount}">
+                                <fb:control>
+                                    <Input id="TotalAmount" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="INTERNAL_GROUP" visibleInFilterBar="{store>/bColumns/25/filterVisible}" name="TaxRate" label="TaxRate">
+                                <fb:control>
+                                    <ComboBox id="ComboBox_TaxRate">
+                                        <items>
+                                            <core:Item key="TaxRate001" text="0.06"/>
+                                            <core:Item key="TaxRate002" text="0.13"/>
+                                            <core:Item key="TaxRate003" text="0.2"/>
+                                        </items>
+                                    </ComboBox>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/26/filterVisible}" name="TaxAmount" label="{i18n>TaxAmount}">
+                                <fb:control>
+                                    <Input id="TaxAmount" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/27/filterVisible}" name="TotalDiscAmount" label="{i18n>TotalDiscAmount}">
+                                <fb:control>
+                                    <Input id="TotalDiscAmount" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/28/filterVisible}" name="TaxAmotDiscounts" label="{i18n>TaxAmotDiscounts}">
+                                <fb:control>
+                                    <Input id="TaxAmotDiscounts" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/29/filterVisible}" name="VersTaxClasNumber" label="{i18n>VersTaxClasNumber}">
+                                <fb:control>
+                                    <Input id="VersTaxClasNumber" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/30/filterVisible}" name="TaxClafNumber" label="{i18n>TaxClafNumber}">
+                                <fb:control>
+                                    <Input id="TaxClafNumber" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/31/filterVisible}" name="PrefTreatment" label="{i18n>PrefTreatment}">
+                                <fb:control>
+                                    <Input id="PrefTreatment" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/32/filterVisible}" name="PrefTreatmentDes" label="{i18n>PrefTreatmentDes}">
+                                <fb:control>
+                                    <Input id="PrefTreatmentDes" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/33/filterVisible}" name="ZeroTaxRIdenification" label="{i18n>ZeroTaxRIdenification}">
+                                <fb:control>
+                                    <Input id="ZeroTaxRIdenification" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="Standard" visibleInFilterBar="{store>/bColumns/34/filterVisible}" name="DedAmount" label="{i18n>DedAmount}">
+                                <fb:control>
+                                    <Input id="DedAmount" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                        </fb:filterGroupItems>
+                    </fb:FilterBar>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <!--ui:Table id="table_BillingMaster" rows="{path: 'store>/BillingList', sorter: { path: 'store>billingNumber', descending: true }}" cellClick="onBillingMasterCellClick" selectionMode="MultiToggle" visibleRowCount="15" enableColumnReordering="false" ariaLabelledBy="title"-->
+            <ui:Table id="table_BillingMaster" class="billingTable" rows="{store>/BillingList}" cellClick="onBillingMasterCellClick" selectionMode="MultiToggle" visibleRowCount="15" enableColumnReordering="false" ariaLabelledBy="title">
+                <ui:extension>
+                    <OverflowToolbar>
+                        <Title id="title" text="{store>/selectedVariantSetting}" />
+                        <Button id="button_variant" icon="sap-icon://navigation-down-arrow" width="30px" press="onHandleVariant"/>
+                        <ToolbarSpacer/>
+                        <Button id="button_SVAT" width="8%" text="{i18n>SingleVAT}" press="onSVATPress"/>
+                        <Button id="button_MVAT" width="8%" text="{i18n>MultiVAT}" press="onMVATPress"/>
+                        <Button icon="sap-icon://action-settings" text="" press="onbSettingDialogPress" class="sapThemeHighlight-asBackgroundColor"/>
+                    </OverflowToolbar>
+                </ui:extension>
+
+                <ui:columns>
+                    <ui:Column id="Column_billingNo" autoResizable="true" minWidth="120px" visible="{store>/bColumns/0/visible}">
+                        <Label text="{i18n>BillingNumber}" />
+                        <ui:template>
+                            <Link text="{store>billingNumber}" enabled="{= ${store>status}==='Issued' ? true : false}" emphasized="{= ${store>status}==='Issued' ? true : false}" press="onBillingNumberPress"/>
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="120px" visible="{store>/bColumns/1/visible}">
+                        <Label text="{i18n>InvcStatus}" />
+                        <ui:template>
+                            <Text text="{store>status}" wrapping="false"/>
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="120px" visible="{store>/bColumns/2/visible}">
+                        <Label text="{i18n>InvcType}" />
+                        <ui:template>
+                            <Text text="{store>invoiceType}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="320px" visible="{store>/bColumns/3/visible}">
+                        <Label text="{i18n>Category}"/>
+                        <ui:template>
+                            <Input id="idTaxCodeClass" placeholder="{i18n>TaxCategoryInform}" class="TaxCodeClass" editable="{= ${store>status}==='Issued' ? false : true}" value="{store>categoryCode}" suggestionItems="{TaxCodeClassModel>/TaxCode}" startSuggestion="3" showSuggestion="true" change="onTaxCodeChange" submit="onBillingUpdate_category" tooltip="{i18n>TaxCategoryInform}">
+                                <suggestionItems>
+                                    <core:Item text="{TaxCodeClassModel>id}" />
+                                </suggestionItems>
+                            </Input>
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="120px" visible="{store>/bColumns/4/visible}">
+                        <Label text="{i18n>BillingDate}" />
+                        <ui:template>
+                            <Text text="{store>billingDate}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="120px" visible="{store>/bColumns/5/visible}">
+                        <Label text="{i18n>BuyerNumber}" />
+                        <ui:template>
+                            <Text text="{store>buyerNumber}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="320px" visible="{store>/bColumns/6/visible}">
+                        <Label text="{i18n>BuyerName}"/>
+                        <ui:template>
+                            <Text text="{store>buyerName}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="170px" visible="{store>/bColumns/7/visible}">
+                        <Label text="{i18n>BuyerVATNumber}" />
+                        <ui:template>
+                            <Text text="{store>buyerVATNumber}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="330px" visible="{store>/bColumns/8/visible}">
+                        <Label text="{i18n>BuyerAddress}" />
+                        <ui:template>
+                            <Text text="{store>buyerAddress}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="420px" visible="{store>/bColumns/9/visible}">
+                        <Label text="{i18n>BuyerBankInfo}" />
+                        <ui:template>
+                            <Text text="{store>buyerBankInfo}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="330px" visible="{store>/bColumns/10/visible}">
+                        <Label text="{i18n>Notes}" />
+                        <ui:template>
+                            <Input value="{store>notes}" placeholder="{i18n>TaxCategoryInform}" editable="{= ${store>status}==='Issued' ? false : true}" submit="onBillingUpdate_note" tooltip="press enter to confirm update"/>
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="120px" visible="{store>/bColumns/11/visible}">
+                        <Label text="{i18n>RedNotifiLetNumber}" />
+                        <ui:template>
+                            <Text text="{store>redNotificationLetterNumber}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="120px" visible="{store>/bColumns/12/visible}">
+                        <Label text="{i18n>OriInvcCode}" />
+                        <ui:template>
+                            <Text text="{store>originalInvoiceCode}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="120px" visible="{store>/bColumns/13/visible}">
+                        <Label text="{i18n>OriInvcNumber}" />
+                        <ui:template>
+                            <Text text="{store>originalInvoiceNumber}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <!--ui:Column autoResizable="true" minWidth="120px" visible="{store>/bColumns/14/visible}">
+                        <Label text="{i18n>IssueBy}" />
+                        <ui:template>
+                            <Text text="{store>issuedBy}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="120px" visible="{store>/bColumns/15/visible}">
+                        <Label text="{i18n>Verifier}" />
+                        <ui:template>
+                            <Text text="{store>verifier}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="120px" visible="{store>/bColumns/16/visible}">
+                        <Label text="{i18n>Collector}" />
+                        <ui:template>
+                            <Text text="{store>collector}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column-->
+                    <ui:Column autoResizable="true" minWidth="350px" visible="{store>/bColumns/17/visible}">
+                        <Label text="{i18n>PayeBankNameAccount}" />
+                        <ui:template>
+                            <Text text="{store>payeeBankNameAccount}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="250px" visible="{store>/bColumns/18/visible}">
+                        <Label text="{i18n>SellerAddress}" />
+                        <ui:template>
+                            <Text text="{store>sellerAddress}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="150px" visible="{store>/bColumns/19/visible}">
+                        <Label text="{i18n>MatNumber}" />
+                        <ui:template>
+                            <Text text="{store>materialNumber}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="150px" visible="{store>/bColumns/20/visible}">
+                        <Label text="{i18n>MatDescription}" />
+                        <ui:template>
+                            <Text text="{store>materialDescription}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="120px" visible="{store>/bColumns/21/visible}">
+                        <Label text="{i18n>MaltSpec}" />
+                        <ui:template>
+                            <Text text="{store>matlSpec}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="140px" visible="{store>/bColumns/22/visible}">
+                        <Label text="{i18n>UnitMeasure}" />
+                        <ui:template>
+                            <Text text="{store>unitOfMeature}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="120px" visible="{store>/bColumns/23/visible}">
+                        <Label text="{i18n>BilledQuantity}" />
+                        <ui:template>
+                            <Text text="{store>billedQuantity}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="120px" visible="{store>/bColumns/24/visible}">
+                        <Label text="{i18n>TotalAmount}" />
+                        <ui:template>
+                            <Text text="{store>totalAmount}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="120px" visible="{store>/bColumns/25/visible}">
+                        <Label text="{i18n>TaxRate}" />
+                        <ui:template>
+                            <Text text="{store>taxRate}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="120px" visible="{store>/bColumns/26/visible}">
+                        <Label text="{i18n>TaxAmount}" />
+                        <ui:template>
+                            <Text text="{store>taxAmount}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="140px" visible="{store>/bColumns/27/visible}">
+                        <Label text="{i18n>TotalDiscAmount}t" />
+                        <ui:template>
+                            <Text text="{store>totalDiscountAmount}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="140px" visible="{store>/bColumns/28/visible}">
+                        <Label text="{i18n>TaxAmotDiscounts}" />
+                        <ui:template>
+                            <Text text="{store>taxDiscountAmount}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="140px" visible="{store>/bColumns/29/visible}">
+                        <Label text="{i18n>VersTaxClasNumber}" />
+                        <ui:template>
+                            <Text text="{store>taxClassificationNumberVersion}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="140px" visible="{store>/bColumns/30/visible}">
+                        <Label text="{i18n>TaxClafNumber}" />
+                        <ui:template>
+                            <Text text="{store>taxClassificationNumber}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="140px" visible="{store>/bColumns/31/visible}">
+                        <Label text="{i18n>PrefTreatment}" />
+                        <ui:template>
+                            <Text text="{store>preferentialTreatment}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="140px" visible="{store>/bColumns/32/visible}">
+                        <Label text="{i18n>PrefTreatmentDes}" />
+                        <ui:template>
+                            <Text text="{store>preferentialTreatmentDescription}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="140px" visible="{store>/bColumns/33/visible}">
+                        <Label text="{i18n>ZeroTaxRIdenification}" />
+                        <ui:template>
+                            <Text text="{store>zeroTaxRateIdentification}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="140px" visible="{store>/bColumns/34/visible}">
+                        <Label text="{i18n>DedAmount}" />
+                        <ui:template>
+                            <Text text="{store>deductionAmount}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                </ui:columns>
+                <ui:footer>
+                </ui:footer>
+            </ui:Table>
+        </f:content>
+
+        <f:footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button type="Accept" text="{i18n>Accept}"/>
+                <Button type="Reject" text="{i18n>Reject}"/>
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>

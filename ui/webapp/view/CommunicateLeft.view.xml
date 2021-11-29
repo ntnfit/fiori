@@ -1,0 +1,11 @@
+<mvc:View controllerName="com.bosch.sbs.sbsfioritemplate.ui.controller.CommunicateLeft" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+    <Page showHeader="false">
+        <VBox class="sapUiTinyMarginTop sapUiMediumMarginBegin">
+            <Select width="200px" forceSelection="false" change="onSelectChange" selectedKey="{store>/CommunicateTestData}" items="{CommunicateLeftModel>/testDataCollection}">
+                <core:Item key="{CommunicateLeftModel>value}" text="{CommunicateLeftModel>name}" />
+            </Select>
+            <Button press="onSubscribe" text="Subscribe" />
+            <Button press="onUnsubscribe" text="Unsubscribe" />
+        </VBox>
+    </Page>
+</mvc:View>

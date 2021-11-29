@@ -1,0 +1,249 @@
+<mvc:View
+	controllerName="com.bosch.sbs.sbsfioritemplate.ui.controller.Table"
+	xmlns="sap.m"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:ui="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:plugins="sap.ui.table.plugins"
+    xmlns:vm="sap.ui.comp.variants"
+    height="100%">
+	<f:DynamicPage
+		showHeader="false"
+		enableScrolling="false"
+		class="sapUiContentPadding">
+		<!-- DynamicPage Header -->
+		<f:title>
+            <f:DynamicPageTitle class="master_pageTitle" visible="true">
+                <f:heading>
+                    <Title text="Products"></Title>
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<f:content>
+					<fb:FilterBar id="filterbar" reset="onReset" search="onSearch" useToolbar="false" showGoOnFB="true">
+						<fb:filterGroupItems id="filterGroupItems_billing">
+							<!-- <fb:FilterGroupItem name="ProductName" label="ProductName" groupName="INTERNAL_GROUP" visibleInFilterBar="{store>/bColumns/0/filterVisible}">
+								<fb:control>
+									<Input id="slProductName"/>
+								</fb:control>				
+							</fb:FilterGroupItem>
+
+							<fb:FilterGroupItem name="ProductId" label="ProductId" groupName="INTERNAL_GROUP" visibleInFilterBar="{store>/bColumns/1/filterVisible}">
+								<fb:control>
+									<Input id="slProductId"/>
+								</fb:control>				
+							</fb:FilterGroupItem>
+ -->
+							<!-- <fb:FilterGroupItem name="Quantity" label="Quantity" groupName="INTERNAL_GROUP" visibleInFilterBar="{store>/bColumns/2/filterVisible}">
+								<fb:control>
+									<Input id="slQuantity"/>
+								</fb:control>				
+							</fb:FilterGroupItem>
+
+							<fb:FilterGroupItem name="Price" label="Price" groupName="INTERNAL_GROUP" visibleInFilterBar="{store>/bColumns/3/filterVisible}">
+								<fb:control>
+									<Input id="slPrice"/>
+								</fb:control>				
+							</fb:FilterGroupItem>
+							
+
+							<fb:FilterGroupItem name="Status" label="Status" groupName="INTERNAL_GROUP" visibleInFilterBar="{store>/bColumns/4/filterVisible}">
+								<fb:control>
+									<Input id="slStatus"/>
+								</fb:control>				
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem name="Supplier" label="Supplier" groupName="INTERNAL_GROUP" visibleInFilterBar="{store>/bColumns/5/filterVisible}">
+								<fb:control>
+									<Input id="slSupplier"/>
+								</fb:control>				
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem name="Image" label="Image" groupName="INTERNAL_GROUP" visibleInFilterBar="{store>/bColumns/6/filterVisible}">
+								<fb:control>
+									<Input id="slImage"/>
+								</fb:control>				
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem name="Details" label="Details" groupName="INTERNAL_GROUP" visibleInFilterBar="{store>/bColumns/7/filterVisible}">
+								<fb:control>
+									<Input id="slDetails"/>
+								</fb:control>				
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem name="HeavyWeight" label="HeavyWeight" groupName="INTERNAL_GROUP" visibleInFilterBar="{store>/bColumns/8/filterVisible}">
+								<fb:control>
+									<Input id="slHeavyWeight"/>
+								</fb:control>				
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem name="MainCategory" label="MainCategory" groupName="INTERNAL_GROUP" visibleInFilterBar="{store>/bColumns/9/filterVisible}">
+								<fb:control>
+									<MultiComboBox id="slMainCategory" >
+                                        <core:Item key="1" text="test1"/>
+										<core:Item key="2" text="test2"/>
+										<core:Item key="3" text="test3"/>
+                                    </MultiComboBox>
+								</fb:control>				
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem name="AdditionalCategories" label="AdditionalCategories" groupName="INTERNAL_GROUP" visibleInFilterBar="{store>/bColumns/10/filterVisible}">
+								<fb:control>
+									<MultiComboBox id="slAdditionalCategories" >
+                                        <core:Item key="1" text="test1"/>
+										<core:Item key="2" text="test2"/>
+                                    </MultiComboBox>
+								</fb:control>				
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem name="DeliveryDate" label="DeliveryDate" groupName="INTERNAL_GROUP" visibleInFilterBar="{store>/bColumns/11/filterVisible}">
+								<fb:control>
+									<DatePicker displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" id="slDeliveryDate"/>
+								</fb:control>				
+							</fb:FilterGroupItem> -->
+							
+						</fb:filterGroupItems>
+					</fb:FilterBar>
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<ui:Table
+				id="table"
+				rows="{/tableList}"
+				selectionMode="MultiToggle"
+				visibleRowCount="11"
+				paste="onPaste"
+				enableColumnReordering="false"
+				ariaLabelledBy="title" class="test-table">
+				<ui:extension>
+					<OverflowToolbar style="Clear">
+						<Title id="title" text="{store>/selectedVariantSetting}" />
+                        <Button id="button_variant" icon="sap-icon://navigation-down-arrow" width="30px" press="onHandleVariant"/>
+						<ToolbarSpacer/>
+						<Input
+							id="inputColumn"
+							width="10%"
+							
+							placeholder="fixed column count"
+							tooltip="fixed column count"/>
+						<Input
+							id="inputRow"
+							width="10%"
+							placeholder="fixed row count"
+							tooltip="fixed row count"/>
+						<Input
+							id="inputButtomRow"
+							width="10%"
+							placeholder="fixed bottom row count"
+							tooltip="fixed bottom row count"/>
+						<Button id="button" text="Apply" press="buttonPress"/>
+
+						<Select id="select" items="{modes>/items}" selectedKey="Navigation" change="onBehaviourModeChange">
+							<core:Item key="{modes>key}" text="{modes>text}"/>
+						</Select>
+						<Button icon="sap-icon://action-settings" text="" press="onbSettingDialogPress" class="sapThemeHighlight-asBackgroundColor"/>
+					</OverflowToolbar>
+				</ui:extension>
+				<ui:columns>
+					<ui:Column id="Name" minWidth="11rem" sortProperty="Name">
+						<Label text="ProductName" />
+						<ui:template>
+							<Text text="{name}" wrapping="false" />
+						</ui:template>
+					</ui:Column>
+					<ui:Column minWidth="11rem" visible="{store>/bColumns/1/visible}">
+						<Label text="ProductId" />
+						<ui:template>
+							<Input value="{productId}"/>
+						</ui:template>
+					</ui:Column>
+					<ui:Column minWidth="6rem" hAlign="End" visible="{store>/bColumns/2/visible}" >
+						<Label text="Quantity" />
+						<ui:template >
+							<Label text="{quantity}"/>
+						</ui:template>
+					</ui:Column>
+					<ui:Column minWidth="9rem" visible="{store>/bColumns/3/visible}">
+						<Label text="Status" />
+						<ui:template>
+							<ObjectStatus text="{status}" state="{
+								path: 'Available',
+								formatter: '.formatAvailableToObjectState'
+							}"/>
+						</ui:template>
+					</ui:Column>
+					<ui:Column minWidth="9rem" visible="{store>/bColumns/4/visible}">
+						<Label text="Price" />
+						<ui:template>
+							<u:Currency value="{price}" currency="{currencyCode}"/>
+						</ui:template>
+					</ui:Column>
+					<ui:Column minWidth="12rem" visible="{store>/bColumns/5/visible}">
+						<Label text="Supplier" />
+						<ui:template>
+							<ComboBox value="{supplierName}" items="{/suppliers}">
+								<core:Item text="{name}"/>
+							</ComboBox>
+						</ui:template>
+					</ui:Column>
+					<ui:Column minWidth="9rem" visible="{store>/bColumns/6/visible}">
+						<Label text="Image" />
+						<ui:template>
+							<Link text="Show Image" href="{productPicUrl}" target="_blank"/>
+						</ui:template>
+					</ui:Column>
+					<ui:Column minWidth="9rem" visible="{store>/bColumns/7/visible}">
+						<Label text="Details" />
+						<ui:template>
+							<Button text="Show Details" press="handleDetailsPress"/>
+						</ui:template>
+					</ui:Column>
+					<ui:Column minWidth="7rem" visible="{store>/bColumns/8/visible}">
+						<Label text="HeavyWeight" />
+						<ui:template>
+							<Text text="{weightMeasure}" wrapping="false" />
+						</ui:template>
+					</ui:Column>
+					<ui:Column minWidth="12rem" visible="{store>/bColumns/9/visible}">
+						<Label text="MainCategory" />
+						<ui:template>
+							<Text text="{mainCategory}" wrapping="false" />
+						</ui:template>
+					</ui:Column>
+					<ui:Column minWidth="12rem" visible="{store>/bColumns/10/visible}">
+						<Label text="AdditionalCategories" />
+						<ui:template>
+							<Text text="{category}" wrapping="false" />
+						</ui:template>
+					</ui:Column>
+					<ui:Column minWidth="6rem" hAlign="Center">
+						<Label text="Status" />
+						<ui:template>
+							<core:Icon src="{
+								path: 'Available',
+								formatter: '.formatAvailableToIcon'
+							}"/>
+						</ui:template>
+					</ui:Column>
+					<ui:Column minWidth="11rem" hAlign="Center" visible="{store>/bColumns/11/visible}">
+						<Label text="DeliveryDate" />
+						<ui:template>
+							<DatePicker value="{
+								path: 'deliveryDate',
+								type: 'sap.ui.model.type.Date',
+								formatOptions: {source: {pattern: 'timestamp'}}
+							}"/>
+						</ui:template>
+					</ui:Column>
+				</ui:columns>
+				<ui:footer>
+                </ui:footer>
+			</ui:Table>
+		</f:content>
+		
+	</f:DynamicPage>
+</mvc:View>

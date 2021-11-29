@@ -1,0 +1,39 @@
+<mvc:View controllerName="com.bosch.sbs.sbsfioritemplate.ui.controller.Home"
+	xmlns:tnt="sap.tnt"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns="sap.m"
+	xmlns:f="sap.f">
+	<tnt:ToolPage class="app-root" id="toolPage" busyIndicatorSize="Small" sideExpanded="{store>/homePageSideNavExpanded}">
+		<tnt:header>
+			<VBox class="page-header">
+				<core:Fragment fragmentName="com.bosch.sbs.sbsfioritemplate.ui.fragment.BoschHeader" type="XML"></core:Fragment>
+				<core:Fragment fragmentName="com.bosch.sbs.sbsfioritemplate.ui.fragment.ShellBar_New" type="XML"></core:Fragment>
+			</VBox>
+		</tnt:header>
+		<tnt:sideContent>
+			<tnt:SideNavigation id="homePageSideNav" expanded="false" itemSelect="onItemSelect">
+				<tnt:NavigationList>
+					<tnt:NavigationListItem text="Purchase Order" icon="sap-icon://sales-order" key="purchaseorder"></tnt:NavigationListItem>
+				</tnt:NavigationList>
+				<tnt:fixedItem>
+					<tnt:NavigationList>
+						<tnt:NavigationListItem text="{= ${store>/homePageSideNavExpanded}?'Collapse':''}" icon="{= ${store>/homePageSideNavExpanded}?'sap-icon://close-command-field':'sap-icon://open-command-field'}" key="expand"/>
+					</tnt:NavigationList>
+				</tnt:fixedItem>
+			</tnt:SideNavigation>
+		</tnt:sideContent>
+		<tnt:mainContents>
+			<NavContainer>
+				<pages>
+					<ScrollContainer busy="{store>/pageMasterDetailBusy}" id="po" busyIndicatorDelay="0" horizontal="false" vertical="true" height="100%">
+						<f:FlexibleColumnLayout id="fcl" stateChange="onStateChanged" layout="{store>/layout}" backgroundDesign="Translucent">
+							<f:beginColumnPages id="beginColumnPages"/>
+							<f:midColumnPages id="midColumnPages"/>
+						</f:FlexibleColumnLayout>
+					</ScrollContainer>
+				</pages>
+			</NavContainer>
+		</tnt:mainContents>
+	</tnt:ToolPage>
+</mvc:View> 

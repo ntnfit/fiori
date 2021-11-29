@@ -1,1 +1,182 @@
-/* Enter your custom styles here */
+.page-header {
+  margin-left: 0 !important;
+  width: 100%; }
+  .page-header .shell-bar {
+    background-color: #fff;
+    box-shadow: 0px 1px 1px 0px #ccc;
+    padding: 0 5px;
+    z-index: 5; }
+    .page-header .shell-bar .left .logo {
+      margin-left: 10px; }
+      .page-header .shell-bar .left .logo .sapMFlexItem {
+        display: flex;
+        align-items: center; }
+    .page-header .shell-bar .left .title {
+      margin-left: 60px; }
+      .page-header .shell-bar .left .title span {
+        color: #32363a;
+        font-size: 1rem;
+        font-weight: bold; }
+    .page-header .shell-bar .left .hello {
+      margin-left: 1.5rem;
+      color: #32363a;
+      font-size: 12px; }
+    .page-header .shell-bar .left .menu-bar {
+      border: none;
+      box-shadow: none; }
+      .page-header .shell-bar .left .menu-bar .sapMITBText {
+        color: #32363a !important;
+        font-weight: bold; }
+        .page-header .shell-bar .left .menu-bar .sapMITBText:hover {
+          color: #32363a; }
+      .page-header .shell-bar .left .menu-bar .sapMITBSelected .sapMITBText {
+        color: #d1e8ff !important; }
+      .page-header .shell-bar .left .menu-bar .sapMITBSelected .sapMITBContentArrow {
+        height: 0.7rem !important; }
+        .page-header .shell-bar .left .menu-bar .sapMITBSelected .sapMITBContentArrow::after {
+          background-color: #d1e8ff !important; }
+    .page-header .shell-bar .right .title {
+      margin-right: 1.5rem; }
+      .page-header .shell-bar .right .title span {
+        color: #32363a;
+        font-size: 1rem;
+        font-weight: bold; }
+    .page-header .shell-bar .right .hello {
+      color: #32363a;
+      font-size: 12px; }
+    .page-header .shell-bar .right .user-menu-btn {
+      margin-left: 10px;
+      margin-right: 15px; }
+      .page-header .shell-bar .right .user-menu-btn .sapUiIcon {
+        color: #32363a; }
+      .page-header .shell-bar .right .user-menu-btn span {
+        color: #32363a; }
+    .page-header .shell-bar .customize-btn:hover .sapMBtnInner {
+      background-color: #eaeaea !important; }
+    .page-header .shell-bar .customize-btn .sapMBtnInner {
+      border-radius: 50% !important;
+      transition: all 0.3s !important; }
+      .page-header .shell-bar .customize-btn .sapMBtnInner:hover {
+        background-color: #eaeaea !important; }
+    .page-header .shell-bar .customize-btn .sapUiIcon {
+      color: #333 !important; }
+    .page-header .shell-bar .customize-btn span {
+      color: #333 !important; }
+
+.usermenu-userinfo-tab .usermenu-userinfo-header {
+  box-sizing: border-box;
+  padding-top: 20px; }
+
+.login-view {
+  position: relative;
+  background-image: url("../assets/login-bac.png");
+  background-size: 100%; }
+  .login-view .login-block {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center; }
+    .login-view .login-block .web-title {
+      display: block;
+      margin-bottom: 35px;
+      text-align: center;
+      height: 40px;
+      line-height: 30px;
+      color: #346187;
+      font-size: 21px;
+      font-weight: 600; }
+    .login-view .login-block .login-form {
+      width: 500px;
+      margin: 0 auto;
+      margin-bottom: 80px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      padding: 25px;
+      box-sizing: border-box; }
+      .login-view .login-block .login-form .form-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 5px; }
+        .login-view .login-block .login-form .form-item .form-label {
+          text-align: right;
+          float: left;
+          font-size: 14px;
+          color: #606266;
+          line-height: 40px;
+          box-sizing: border-box; }
+        .login-view .login-block .login-form .form-item .login-input {
+          height: 40px; }
+          .login-view .login-block .login-form .form-item .login-input .sapMInputBaseContentWrapper {
+            height: 40px; }
+            .login-view .login-block .login-form .form-item .login-input .sapMInputBaseContentWrapper::-webkit-input-placeholder {
+              color: #dcdfe6; }
+          .login-view .login-block .login-form .form-item .login-input .sapMSltArrow {
+            display: flex;
+            align-items: center;
+            justify-content: center; }
+          .login-view .login-block .login-form .form-item .login-input .sapMSltLabel {
+            display: flex;
+            align-items: center; }
+        .login-view .login-block .login-form .form-item .login-btn {
+          width: 100%;
+          background-color: #5f95c2;
+          font-size: 16px;
+          color: #fff;
+          border-color: #409eff;
+          display: inline-block;
+          line-height: 1;
+          white-space: nowrap;
+          cursor: pointer;
+          border: 1px solid #dcdfe6;
+          text-align: center;
+          box-sizing: border-box;
+          outline: 0;
+          margin: 0;
+          transition: 0.1s;
+          font-weight: 500;
+          border-radius: 4px;
+          margin-top: 20px; }
+          .login-view .login-block .login-form .form-item .login-btn span {
+            background: transparent;
+            outline: none;
+            border: none;
+            color: white; }
+        .login-view .login-block .login-form .form-item.login_btn {
+          margin-bottom: 0px; }
+  .login-view .footer {
+    position: absolute;
+    bottom: 0px;
+    right: 0px; }
+    .login-view .footer .copyright {
+      padding: 15px;
+      color: #346187;
+      font-size: 14px; }
+
+.BillingMasterClass .filter-bar {
+  max-height: 160px;
+  overflow: scroll; }
+
+.BillingMasterClass .TaxCodeClass {
+  width: 250px !important; }
+
+.page-map #iconmarker {
+  background-image: url("https://docs.mapbox.com/mapbox-gl-js/assets/washington-monument.jpg");
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer; }
+
+.sapTntToolPageHeader {
+  height: 60px !important; }
+  .sapTntToolPageHeader > .sapTntToolHeader {
+    padding: 0 !important;
+    overflow: visible !important; }
+
+.sapTntToolPageMainContentWrapper .sapMScrollContScroll {
+  height: 100%; }

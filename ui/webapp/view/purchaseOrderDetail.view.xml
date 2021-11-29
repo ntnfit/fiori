@@ -1,0 +1,82 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.bosch.sbs.sbsfioritemplate.ui.controller.purchaseOrderDetail" displayBlock="true"
+	xmlns:uxap="sap.uxap"
+	xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout"
+	xmlns:ui="sap.ui.table"
+	xmlns:commons="sap.suite.ui.commons"
+	xmlns:core="sap.ui.core" height="100%">
+	
+	<uxap:ObjectPageLayout id="ObjectPageLayout" class="billingDetail_objPage" busy="{store>/DetailPageBusy}" busyIndicatorDelay="0" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" upperCaseAnchorBar="false">
+		<uxap:headerTitle>
+			<uxap:ObjectPageDynamicHeaderTitle>
+				<uxap:expandedHeading>
+					<Title id="purchaseOrderDetailTitle" text="Purchase Order Details ({store>/selectedPurchaseOrder/PurchaseOrder})" wrapping="true" class="sapUiSmallMarginEnd"/>
+				</uxap:expandedHeading>
+				<!--uxap:snappedHeading>
+					<FlexBox wrap="Wrap" fitContainer="true" alignItems="Center">
+						<FlexBox wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
+							<Title text="Purchase Orders ({store>detailId})" wrapping="true" class="sapUiTinyMarginEnd"/>
+						</FlexBox>
+					</FlexBox>
+				</uxap:snappedHeading-->
+				<uxap:navigationActions>
+					<OverflowToolbarButton id="closeTwoColumnBtn" type="Transparent" icon="sap-icon://exit-full-screen" press="handleClose" tooltip="Close column" visible="{= ${/actionButtonsInfo/midColumn/closeColumn} !== null}"/>
+				</uxap:navigationActions>
+			</uxap:ObjectPageDynamicHeaderTitle>
+		</uxap:headerTitle>
+
+		<uxap:sections>
+			<uxap:ObjectPageSection titleUppercase="false" id="goalsSection" showTitle="false" title="Billing Detail page">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection id="goalsSectionSS1">
+						<uxap:blocks>
+							<IconTabBar id="idIconTabBarMulti" expanded="true" class="sapUiNoContentPadding">
+								<items>
+									<IconTabFilter icon="sap-icon://activity-2" key="info">
+										<VBox class="billingDetail_invoiceHeader">
+											<form:SimpleForm id="form_PurchaseOrderDetail" editable="false" layout="ResponsiveGridLayout" labelSpanXL="2" labelSpanL="4" labelSpanM="4" labelSpanS="4" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
+                                                <form:content>
+                                                    <core:Title text="" />
+                                                    <Label text="Purchase Order" />
+					                                <Text id="detailPurchaseOrderTxt" text="{store>/selectedPurchaseOrder/PurchaseOrder}" />
+					                                <Label text="Company Code" />
+					                                <Text text="{store>/selectedPurchaseOrder/CompanyCode}" />
+					                                <Label text="Purchase Order Type" />
+					                                <Text text="{store>/selectedPurchaseOrder/PurchaseOrderType}" />
+					                                <Label text="Purchasing Processing Status" />
+					                                <Text text="{store>/selectedPurchaseOrder/PurchasingProcessingStatus}" />
+					                                <Label text="Created By User" />
+					                                <Text text="{store>/selectedPurchaseOrder/CreatedByUser}" />
+					                                <Label text="Creation Date" />
+					                                <Text text="{store>/selectedPurchaseOrder/CreationDate}" />
+					                                <Label text="Last Change Date Time" />
+					                                <Text text="{store>/selectedPurchaseOrder/LastChangeDateTime}" />
+
+					                                <core:Title text="" />
+					                                <Label text="Supplier" />
+					                                <Text text="{store>/selectedPurchaseOrder/Supplier}" />
+					                                <Label text="Purchasing Organization" />
+					                                <Text text="{store>/selectedPurchaseOrder/PurchasingOrganization}" />
+					                                <Label text="Purchasing Document Origin" />
+					                                <Text text="{store>/selectedPurchaseOrder/PurchasingDocumentOrigin}" />
+					                                <Label text="Purchasing Group" />
+					                                <Text text="{store>/selectedPurchaseOrder/PurchasingGroup}" />
+					                                <Label text="Purchase Order Date" />
+					                                <Text text="{store>/selectedPurchaseOrder/PurchaseOrderDate}" />
+					                                <Label text="Document Currency" />
+					                                <Text text="{store>/selectedPurchaseOrder/DocumentCurrency}" />
+				                                </form:content>
+			                                </form:SimpleForm>
+										</VBox>
+									</IconTabFilter>
+								</items>
+							</IconTabBar>
+						</uxap:blocks>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+		</uxap:sections>
+	</uxap:ObjectPageLayout>
+</mvc:View>

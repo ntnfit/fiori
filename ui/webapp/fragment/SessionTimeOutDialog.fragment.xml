@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:core="sap.ui.core">
+	<Dialog
+		title="Session Info"
+		contentWidth="20rem"
+		verticalScrolling="false">
+		<buttons>
+			<Button
+				text="Sign In"
+				press="onSignIn"
+				type="Emphasized"/>
+			<Button
+				text="Close"
+				press="onSessionDialogClose"/>
+		</buttons>
+		<f:IllustratedMessage
+			title="Your session has expired."
+			description="Sign in to pick up where you left off." 
+			illustrationType="tnt-SessionExpired"/>
+	</Dialog>
+</core:FragmentDefinition>

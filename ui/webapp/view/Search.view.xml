@@ -1,0 +1,12 @@
+<mvc:View
+	height="100%"
+	controllerName="com.bosch.sbs.sbsfioritemplate.ui.controller.Search"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page
+		id="searchPage"
+		showHeader="true" >
+		
+		
+	</Page>
+</mvc:View>

@@ -1,0 +1,20 @@
+@import "./Blocks/ShellBar";
+@import "./Blocks/UserMenu";
+
+@import "./Pages/Login";
+@import "./Pages/BillingMaster";
+@import "./Pages/Map";
+
+.sapTntToolPageHeader {
+    height: 60px !important;
+    & > .sapTntToolHeader {
+        padding: 0 !important;
+        overflow: visible !important;
+    }
+}
+
+.sapTntToolPageMainContentWrapper {
+    .sapMScrollContScroll {
+        height: 100%;
+    }
+}

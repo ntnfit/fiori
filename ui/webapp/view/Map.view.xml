@@ -1,0 +1,5 @@
+<mvc:View controllerName="com.bosch.sbs.sbsfioritemplate.ui.controller.Map" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+    <Page showHeader="false" class="page-map">
+        <FlexBox id="map" height="100%" width="100%"></FlexBox>
+    </Page>
+</mvc:View>

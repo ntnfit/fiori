@@ -4,8 +4,13 @@
     "noEmit": true,
     "checkJs": true,
     "allowJs": true,
+    "lib": [
+      "ES2019",
+      "DOM"
+    ],
     "types": [
-      "@sapui5/ts-types"
+      "@sapui5/ts-types",
+      "@types/mapbox-gl"
     ]
   }
 }

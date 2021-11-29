@@ -1,0 +1,66 @@
+<mvc:View controllerName="com.bosch.sbs.sbsfioritemplate.ui.controller.purchaseOrderMaster"
+    xmlns="sap.m"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:ui="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:plugins="sap.ui.table.plugins"
+    xmlns:vm="sap.ui.comp.variants" class="sapUiSizeCompact" height="100%">
+
+    <f:DynamicPage class="MasterClass" busy="{store>/MasterPageBusy}" busyIndicatorDelay="0" id="dynamicPage_purchaseOrder" headerExpanded="{/headerExpanded}">
+        <!--f:title>
+            <f:DynamicPageTitle class="master_pageTitle" visible="true">
+                <f:heading>
+                    <Title text="Purchase Orders (10)"></Title>
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                <f:content>
+                    <fb:FilterBar class="filter-bar" id="filterbar" reset="onReset" search="onFilterBarSearch" useToolbar="false" showGoOnFB="true" advancedMode="false">
+                        <fb:filterGroupItems id="filterGroupItems_purchaseOrder">
+                            <fb:FilterGroupItem groupName="INTERNAL_GROUP" visibleInFilterBar="true" name="PurchaseOrder" label="Purchase Order">
+                                <fb:control>
+                                    <Input id="filterBarPurchaseOrder" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="INTERNAL_GROUP" visibleInFilterBar="true" name="CompanyCode" label="Company Code">
+                                <fb:control>
+                                    <Input id="filterBarCompanyCode" value=""/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                        </fb:filterGroupItems>
+                    </fb:FilterBar>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <ui:Table id="tableMaster" class="purchaseOrderTable" rows="{store>/purchaseOrders}" visibleRowCount="10" enableColumnReordering="false" ariaLabelledBy="title">
+                <ui:columns>
+                    <ui:Column autoResizable="true" minWidth="120px" visible="true">
+                        <Label text="Purchase Order" />
+                        <ui:template>
+                            <Link id="purchaseOrderLink" text="{store>PurchaseOrder}" enabled="true" emphasized="true" press="onPurchaseOrderPress"/>
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column autoResizable="true" minWidth="120px" visible="true">
+                        <Label text="Company Code" />
+                        <ui:template>
+                            <Text text="{store>CompanyCode}" wrapping="false"/>
+                        </ui:template>
+                    </ui:Column>
+                </ui:columns>
+                <ui:footer>
+                </ui:footer>
+            </ui:Table>
+        </f:content-->
+    </f:DynamicPage>
+</mvc:View>

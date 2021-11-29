@@ -1,0 +1,6 @@
+<mvc:View controllerName="com.bosch.sbs.sbsfioritemplate.ui.controller.Communicate" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+    <SplitContainer id="communicate_example">
+        <masterPages></masterPages>
+        <detailPages></detailPages>
+    </SplitContainer>
+</mvc:View>

@@ -7,9 +7,16 @@ modules:
   path: sbsfioritemplate-approuter
   requires:
   - name: sbsfioritemplate_html_repo_runtime
+  - name: sbsfioritemplate-xsuaa
+    group: destinations
+    properties: 
+      name: "backend_service"
+      url: "https://sbsfioritemplateservice.cfapps.eu10.hana.ondemand.com"
+      forwardAuthToken: true
   parameters:
     disk-quota: 256M
     memory: 256M
+    host: sbsfioritemplate
 - name: sbsfioritemplate_ui_deployer
   type: com.sap.application.content
   path: .
@@ -43,6 +50,13 @@ resources:
   parameters:
     service: html5-apps-repo
     service-plan: app-host
+- name: sbsfioritemplate-xsuaa
+  type: org.cloudfoundry.existing-service
+  # parameters:
+  #   path: ./xs-security.json
+  #   service: xsuaa
+  #   service-name: sbsfioritemplate-xsuaa
+  #   service-plan: application
 build-parameters:
   before-all:
   - builder: custom

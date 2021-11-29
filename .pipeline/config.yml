@@ -1,0 +1,63 @@
+general:
+  inferBuildTool: true
+  collectTelemetryData: false
+  verbose: false
+
+steps:
+  artifactPrepareVersion:
+    versioningType: cloud_noTag
+  #npmExecuteLint:
+      #failOnError: true
+  #sonarExecuteScan:
+    #inferBranchName: true
+    #inferJavaBinaries: true
+    #inferJavaLibraries: true
+    #projectKey: 'com.bosch.sbs.sbsfioritemplate'
+    #instance: 'MySonar'
+    #sonarTokenCredentialsId: 'sonarToken'
+    #options:
+      #- 'sonar.sources=.'
+      #- 'sonar.projectVersion=1.0'
+      #- 'sonar.coverage.jacoco.xmlReportPaths=**/jacoco.xml'
+  mailSendNotification:
+    notificationAttachment: false
+    notificationRecipients: 'chao.chen4@cn.bosch.com'
+    notifyCulprits: false
+    numLogLinesInBody: 0
+    wrapInNode: false
+  cloudFoundryDeploy:
+    deployTool: 'mtaDeployPlugin'
+    # deployType: 'blue-green'
+    cloudFoundry:
+      apiEndpoint: 'https://api.cf.eu10.hana.ondemand.com'
+      org: 'Robert_Bosch_GmbH_bosch-cidae4-s4x-dev'
+      space: 'Tec-1 Team'
+      credentialsId: 'scp-user-pipeline'
+  #tmsUpload:
+    #nodeName: 'S4T-CF_DEV_Tec-1_Team_MTAR'
+    #credentialsId: 'tms_serviceKey'
+    #customDescription: 'testTMSUpload'
+    #proxy: 'http://rb-proxy-unix-de01.bosch.com:8080'
+
+stages:
+  Init:
+    buildTool: 'npm'
+  'Pull-Request Voting':
+    buildTool: 'npm'
+    #sonarExecuteScan: true
+    #checksPublishResults:
+      #failOnError: true
+      #archive: true
+      #eslint: true
+    #testsPublishResults:
+      #failOnError: true
+      #htmlPublisher:
+        #active: true
+    #karmaExecuteTests: 
+      #modules: 'ui'
+      #runCommand: 'npm run test'
+  Build:
+    buildTool: 'mta'
+  Confirm:
+    manualConfirmation: false
+  Release:

@@ -1,0 +1,284 @@
+{
+    "columns": [
+        {
+            "id": 0,
+            "name": "BillingNumber",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": true
+        },
+        {
+            "id": 1,
+            "name": "InvoiceStatus",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": true
+        },
+        {
+            "id": 2,
+            "name": "InvoiceType",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 3,
+            "name": "Category",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 4,
+            "name": "BillingDate",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": true
+        },
+        {
+            "id": 5,
+            "name": "BuyerNumber",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 6,
+            "name": "BuyerName",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": true
+        },
+        {
+            "id": 7,
+            "name": "BuyerVATNumber",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 8,
+            "name": "BuyerAddress",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 9,
+            "name": "BuyerBankInfo",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 10,
+            "name": "Notes",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 11,
+            "name": "RedNotificationLetterNumber",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 12,
+            "name": "OriginalInvoiceCode",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 13,
+            "name": "OriginalInvoiceNumber",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 14,
+            "name": "IssuedBy",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 15,
+            "name": "Verifier",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 16,
+            "name": "Collector",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 17,
+            "name": "PayeeBankcolumnandAccount",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 18,
+            "name": "SellerAddress",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 19,
+            "name": "MaterialNumber",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 20,
+            "name": "MaterialDescription",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 21,
+            "name": "MatlSpec",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 22,
+            "name": "UnitofMeasure",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 23,
+            "name": "BilledQuantity",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 24,
+            "name": "TotalAmount",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 25,
+            "name": "TaxRate",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 26,
+            "name": "TaxAmount",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 27,
+            "name": "TotalofDiscountAmount",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 28,
+            "name": "TaxAmountonDiscounts",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 29,
+            "name": "VersionofTaxClassificationNumber",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 30,
+            "name": "TaxClassificationNumber",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 31,
+            "name": "PreferentialTreatment",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 32,
+            "name": "PreferentialTreatmentDescription",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 33,
+            "name": "ZeroTaxRateIdentification",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        },
+        {
+            "id": 34,
+            "name": "DeductionAmount",
+            "visible": true,
+            "searchable": true,
+            "editable": false,
+            "filterVisible": false
+        }
+    ]
+}

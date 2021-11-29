@@ -1,11 +1,26 @@
-<mvc:View controllerName="com.bosch.sbs.sbsfioritemplate.ui.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
-	<Shell id="shell">
-		<App id="app">
-			<pages>
-				<Page id="page" title="{i18n>title}">
-					<content></content>
-				</Page>
-			</pages>
-		</App>
-	</Shell>
+<mvc:View controllerName="com.bosch.sbs.sbsfioritemplate.ui.controller.App" xmlns:core="sap.ui.core" xmlns:tnt="sap.tnt" xmlns:f="sap.f" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<tnt:ToolPage class="app-root" id="sbsfioritemplateAppPage" busyIndicatorSize="Small" sideExpanded="{store>/homePageSideNavExpanded}">
+		<tnt:header>
+			<tnt:ToolHeader height="60px">
+				<VBox class="page-header">
+					<core:Fragment fragmentName="com.bosch.sbs.sbsfioritemplate.ui.fragment.BoschHeader" type="XML"></core:Fragment>
+					<core:Fragment fragmentName="com.bosch.sbs.sbsfioritemplate.ui.fragment.ShellBar" type="XML"></core:Fragment>
+				</VBox>
+			</tnt:ToolHeader>
+		</tnt:header>
+		<tnt:sideContent>
+			<tnt:SideNavigation id="homePageSideNav" expanded="true" itemSelect="onItemSelect">
+				<tnt:NavigationList class="main-navigation-inner" items="{RootModel>/navigationList}">
+					<tnt:NavigationListItem class="main-navigation-item" enabled="{RootModel>enabled}" text="{RootModel>title}" icon="{RootModel>icon}" key="{RootModel>key}" expanded="{RootModel>expanded}" items="{RootModel>items}">
+						<tnt:NavigationListItem text="{RootModel>title}" key="{RootModel>key}" enabled="{RootModel>enabled}" icon="{RootModel>icon}" />
+					</tnt:NavigationListItem>
+				</tnt:NavigationList>
+			</tnt:SideNavigation>
+		</tnt:sideContent>
+		<tnt:mainContents>
+			<NavContainer id="app">
+				<pages></pages>
+			</NavContainer>
+		</tnt:mainContents>
+	</tnt:ToolPage>
 </mvc:View>

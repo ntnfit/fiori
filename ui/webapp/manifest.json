@@ -16,7 +16,6 @@
 			"version": "1.40.12"
 		}
 	},
-	
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
@@ -33,7 +32,6 @@
 			"phone": true
 		}
 	},
-
 	"sap.ui5": {
 		"flexEnabled": false,
 		"rootView": {
@@ -47,7 +45,8 @@
 			"libs": {
 				"sap.ui.core": {},
 				"sap.m": {},
-				"sap.ui.layout": {}
+				"sap.ui.layout": {},
+				"sap.ui.table": {}
 			}
 		},
 		"contentDensities": {
@@ -60,12 +59,20 @@
 				"settings": {
 					"bundleName": "com.bosch.sbs.sbsfioritemplate.ui.i18n.i18n"
 				}
+			},
+			"store": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"preload": true,
+				"uri": "model/store.json"
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -77,19 +84,202 @@
 				"controlId": "app",
 				"clearControlAggregation": false
 			},
-			"routes": [{
-				"name": "RouteApp",
-				"pattern": "RouteApp",
-				"target": ["TargetApp"]
-			}],
+			"routes": [
+				{
+					"pattern": "",
+					"name": "welcome",
+					"target": [
+						"Welcome"
+					]
+				},
+				{
+					"pattern": "table",
+					"name": "table",
+					"target": [
+						"Target_table"
+					]
+				},
+				{
+					"pattern": "product",
+					"name": "product",
+					"target": [
+						"Target_product"
+					]
+				},
+				{
+					"pattern": "purchaseorder",
+					"name": "PURCHASEORDER",
+					"target": [
+						"Target_master"
+					]
+				},
+				{
+					"pattern": "purchaseorder/{detailId}",
+					"name": "PURCHASEORDER_DETAIL",
+					"target": [
+						"Target_master",
+						"Target_detail"
+					]
+				},
+				{
+					"pattern": "communicate",
+					"name": "COMMUNICATE",
+					"target": [
+						"CommunicateLeft",
+						"CommunicateRight"
+					]
+				},
+				{
+					"pattern": "map",
+					"name": "MAP",
+					"target": [
+						"Map"
+					]
+				},
+				{
+					"pattern": "form",
+					"name": "FORM",
+					"target": [
+						"Form"
+					]
+				},
+				{
+					"pattern": "search",
+					"name": "SEARCH",
+					"target": [
+						"Search"
+					]
+				},
+				{
+					"pattern": "valueHelp",
+					"name": "VALUEHELP",
+					"target": [
+						"ValueHelp"
+					]
+				},
+				{
+					"pattern": "error",
+					"name": "NotAuthorized",
+					"target": ["NotAuthorized"]
+				},
+				{
+					"pattern": "multiInput",
+					"name": "MULTIINPUT",
+					"target": [
+						"MultiInput"
+					]
+				}
+				
+			],
 			"targets": {
-				"TargetApp": {
+				"App": {
+					"viewName": "App",
+					"viewLevel": 1
+				},
+				"Welcome": {
+					"viewName": "Welcome",
+					"viewLevel": 2,
+					"controlId": "app",
+					"controlAggregation": "pages"
+				},
+				"FlexibleColumnLayout": {
+					"viewName": "FlexibleColumnLayout",
+					"viewLevel": 2,
+					"controlId": "app",
+					"controlAggregation": "pages"
+				},
+				"Target_master": {
+					"viewName": "BillingPage_Master",
+					"viewLevel": 3,
+					"controlAggregation": "beginColumnPages",
+					"controlId": "fcl",
+					"parent": "FlexibleColumnLayout",
+					"clearControlAggregation": true
+				},
+				"Target_detail": {
+					"viewName": "purchaseOrderDetail",
+					"viewLevel": 3,
+					"controlAggregation": "midColumnPages",
+					"controlId": "fcl",
+					"parent": "FlexibleColumnLayout",
+					"clearControlAggregation": true
+				},
+				"Target_table": {
+					"viewName": "TableMaster",
+					"viewLevel": 3,
+					"controlAggregation": "beginColumnPages",
+					"controlId": "fcl",
+					"parent": "FlexibleColumnLayout",
+					"clearControlAggregation": true
+				},
+				"Target_product": {
+					"viewName": "Table",
+					"viewLevel": 3,
+					"controlAggregation": "beginColumnPages",
+					"controlId": "fcl",
+					"parent": "FlexibleColumnLayout",
+					"clearControlAggregation": true
+				},
+				"Communicate": {
+					"viewName": "Communicate",
+					"viewLevel": 2,
+					"controlId": "app",
+					"controlAggregation": "pages"
+				},
+				"CommunicateLeft": {
+					"viewName": "CommunicateLeft",
+					"viewLevel": 3,
+					"controlId": "communicate_example",
+					"controlAggregation": "masterPages",
+					"parent": "Communicate"
+				},
+				"CommunicateRight": {
+					"viewName": "CommunicateRight",
+					"viewLevel": 3,
+					"controlId": "communicate_example",
+					"controlAggregation": "detailPages",
+					"parent": "Communicate"
+				},
+				"Map": {
+					"viewName": "Map",
+					"viewLevel": 2,
+					"controlId": "app",
+					"controlAggregation": "pages"
+				},
+				"Form": {
+					"viewName": "Form",
+					"viewLevel": 2,
+					"controlId": "app",
+					"controlAggregation": "pages"
+				},
+				"Search": {
+					"viewName": "Search",
+					"viewLevel": 2,
+					"controlId": "app",
+					"controlAggregation": "pages"
+				},
+				"ValueHelp": {
+					"viewName": "ValueHelpDialogInputSuggestions",
+					"viewLevel": 2,
+					"controlId": "app",
+					"controlAggregation": "pages"
+				},
+				"NotAuthorized": {
 					"viewType": "XML",
 					"transition": "slide",
-					"clearControlAggregation": false,
-					"viewId": "App",
-					"viewName": "App"
+					"clearControlAggregation": true,
+					"controlAggregation": "pages",
+					"controlId": "app",
+					"viewId": "errorPage",
+					"viewName": "NotAuthorized"
+				},
+				"MultiInput": {
+					"viewName": "MultiInput",
+					"viewLevel": 2,
+					"controlId": "app",
+					"controlAggregation": "pages"
 				}
+				
 			}
 		}
 	}
