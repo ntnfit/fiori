@@ -1,0 +1,4 @@
+applications:
+- name: piperPurchaseOrder_GNG8HC
+  memory: 64M
+  buildpack: staticfile_buildpack
