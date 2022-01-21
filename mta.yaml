@@ -1,27 +1,27 @@
 _schema-version: "3.2"
-ID: sbsfioritemplate
+ID: GNG8HC
 version: 0.0.1
 modules:
-- name: sbsfioritemplate-approuter
+- name: GNG8HC-approuter
   type: approuter.nodejs
-  path: sbsfioritemplate-approuter
+  path: GNG8HC-approuter
   requires:
-  - name: sbsfioritemplate_html_repo_runtime
-  - name: sbsfioritemplate-xsuaa
+  - name: GNG8HC_html_repo_runtime
+  - name: xsuaa-piperpurchaseorde
     group: destinations
     properties: 
       name: "backend_service"
-      url: "https://sbsfioritemplateservice.cfapps.eu10.hana.ondemand.com"
+      url: "https://piperpurchaseorderservice.cfapps.eu10.hana.ondemand.com"
       forwardAuthToken: true
   parameters:
     disk-quota: 256M
     memory: 256M
-    host: sbsfioritemplate
-- name: sbsfioritemplate_ui_deployer
+    host: GNG8HC
+- name: GNG8HC_ui_deployer
   type: com.sap.application.content
   path: .
   requires:
-  - name: sbsfioritemplate_html_repo_host
+  - name: GNG8HC_html_repo_host
     parameters:
       content-target: true
   build-parameters:
@@ -40,22 +40,22 @@ modules:
     - npm run build
     supported-platforms: []
 resources:
-- name: sbsfioritemplate_html_repo_runtime
+- name: GNG8HC_html_repo_runtime
   type: org.cloudfoundry.managed-service
   parameters:
     service: html5-apps-repo
     service-plan: app-runtime
-- name: sbsfioritemplate_html_repo_host
+- name: GNG8HC_html_repo_host
   type: org.cloudfoundry.managed-service
   parameters:
     service: html5-apps-repo
     service-plan: app-host
-- name: sbsfioritemplate-xsuaa
+- name: xsuaa-piperpurchaseorde
   type: org.cloudfoundry.existing-service
   # parameters:
   #   path: ./xs-security.json
   #   service: xsuaa
-  #   service-name: sbsfioritemplate-xsuaa
+  #   service-name:xsuaa-piperpurchaseorde
   #   service-plan: application
 build-parameters:
   before-all:

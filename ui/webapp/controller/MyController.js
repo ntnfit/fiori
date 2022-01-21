@@ -9,7 +9,7 @@ sap.ui.define([
         // remoteHost: `/comboschsbssbsfioritemplateui/backend`, 
 
         // used for local debugging
-        //remoteHost: `https://sbsfioritemplateservice.cfapps.eu10.hana.ondemand.com`,
+        //remoteHost: `https://piperpurchaseorderservice.cfapps.eu10.hana.ondemand.com`,
 
         remoteHost: `backend`, 
 
