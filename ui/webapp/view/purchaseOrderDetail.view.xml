@@ -1,4 +1,4 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.bosch.sbs.gan9hc.ui.controller.purchaseOrderDetail" displayBlock="true"
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.bosch.sbs.gng8hc.ui.controller.purchaseOrderDetail" displayBlock="true"
 	xmlns:uxap="sap.uxap"
 	xmlns="sap.m"
 	xmlns:f="sap.f"

@@ -1,7 +1,7 @@
 /*global QUnit*/
 
 sap.ui.define([
-    "com/bosch/sbs/gan9hc/ui/libs/BaseController",
+    "com/bosch/sbs/gng8hc/ui/libs/BaseController",
     "sap/ui/thirdparty/sinon",
     "sap/ui/thirdparty/sinon-qunit"
 ], function (BaseController) {

@@ -29,10 +29,10 @@ sap.ui.define([
 	var SortOrder = library.SortOrder;
 
 	//sap.ui.table.sample.Basic.Controller
-	return MyController.extend("com.bosch.sbs.gan9hc.ui.controller.MultiInput", {
+	return MyController.extend("com.bosch.sbs.gng8hc.ui.controller.MultiInput", {
 		onInit: function () {
 			var oView = this.getView();
-			var oModel = new JSONModel(sap.ui.require.toUrl("com/bosch/sbs/gan9hc/ui/mockdata/products.json"));
+			var oModel = new JSONModel(sap.ui.require.toUrl("com/bosch/sbs/gng8hc/ui/mockdata/products.json"));
 			oView.setModel(oModel);
 			var multiInputSample = oView.byId("multiInputSample");
 

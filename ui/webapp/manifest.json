@@ -1,7 +1,7 @@
 {
 	"_version": "1.12.0",
 	"sap.app": {
-		"id": "com.bosch.sbs.gan9hc.ui",
+		"id": "com.bosch.sbs.gng8hc.ui",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"applicationVersion": {
@@ -35,7 +35,7 @@
 	"sap.ui5": {
 		"flexEnabled": false,
 		"rootView": {
-			"viewName": "com.bosch.sbs.gan9hc.ui.view.App",
+			"viewName": "com.bosch.sbs.gng8hc.ui.view.App",
 			"type": "XML",
 			"async": true,
 			"id": "App"
@@ -57,7 +57,7 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "com.bosch.sbs.gan9hc.ui.i18n.i18n"
+					"bundleName": "com.bosch.sbs.gng8hc.ui.i18n.i18n"
 				}
 			},
 			"store": {
@@ -79,7 +79,7 @@
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
 				"async": true,
-				"viewPath": "com.bosch.sbs.gan9hc.ui.view",
+				"viewPath": "com.bosch.sbs.gng8hc.ui.view",
 				"controlAggregation": "pages",
 				"controlId": "app",
 				"clearControlAggregation": false

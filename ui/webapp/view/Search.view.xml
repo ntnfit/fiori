@@ -1,6 +1,6 @@
 <mvc:View
 	height="100%"
-	controllerName="com.bosch.sbs.gan9hc.ui.controller.Search"
+	controllerName="com.bosch.sbs.gng8hc.ui.controller.Search"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m">
 	<Page

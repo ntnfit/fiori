@@ -1,7 +1,7 @@
 /*global QUnit*/
 
 sap.ui.define([
-    "com/bosch/sbs/gan9hc/ui/controller/App.controller"
+    "com/bosch/sbs/gng8hc/ui/controller/App.controller"
 ], function (App) {
 	"use strict";
 

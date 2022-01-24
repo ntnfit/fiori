@@ -18,7 +18,7 @@ sap.ui.define([
 	function (MyController, JSONModel, Log, MessageToast, DateFormat, jQuery, ValueState, Dialog, DialogType, Button, ButtonType, Text, SearchField, Fragment, Form) {
 		'use strict';
 		let that;
-		return MyController.extend("com.bosch.sbs.gan9hc.ui.controller.purchaseOrderMaster", {
+		return MyController.extend("com.bosch.sbs.gng8hc.ui.controller.purchaseOrderMaster", {
 			onInit: function () {
 				console.log("Master: onInit() at ", new Date());
 			},

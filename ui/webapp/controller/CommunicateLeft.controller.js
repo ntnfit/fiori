@@ -3,7 +3,7 @@ sap.ui.define([
 ], function (MyController) {
 	"use strict";
 
-	return MyController.extend("com.bosch.sbs.gan9hc.ui.controller.CommunicateLeft", {
+	return MyController.extend("com.bosch.sbs.gng8hc.ui.controller.CommunicateLeft", {
 		data: () => {
 			return {
 				testDataCollection: [{

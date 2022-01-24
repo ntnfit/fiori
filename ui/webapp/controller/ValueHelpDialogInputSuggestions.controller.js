@@ -13,14 +13,14 @@ sap.ui.define([
 ], function (compLibrary, Controller, JSONModel, typeString, ColumnListItem, Label, SearchField, Token, Filter, FilterOperator, Fragment) {
 	"use strict";
 
-	return Controller.extend("com.bosch.sbs.gan9hc.ui.controller.ValueHelpDialogInputSuggestions", {
+	return Controller.extend("com.bosch.sbs.gng8hc.ui.controller.ValueHelpDialogInputSuggestions", {
 		onInit: function () {
 			this._oMultiInput = this.getView().byId("multiInput");
 			this._oMultiInput.setTokens(this._getDefaultTokens());
 			this._oMultiInput.addValidator(this._onMultiInputValidate);
 
-			this.oColModel = new JSONModel(sap.ui.require.toUrl("com/bosch/sbs/gan9hc/ui/mockdata") + "/columnsModel.json");
-			this.oProductsModel = new JSONModel(sap.ui.require.toUrl("com/bosch/sbs/gan9hc/ui/mockdata") + "/valueHelpProducts.json");
+			this.oColModel = new JSONModel(sap.ui.require.toUrl("com/bosch/sbs/gng8hc/ui/mockdata") + "/columnsModel.json");
+			this.oProductsModel = new JSONModel(sap.ui.require.toUrl("com/bosch/sbs/gng8hc/ui/mockdata") + "/valueHelpProducts.json");
 			this.getView().setModel(this.oProductsModel);
 		},
 
@@ -31,7 +31,7 @@ sap.ui.define([
 			});
 
 			Fragment.load({
-				name: "com.bosch.sbs.gan9hc.ui.fragment.ValueHelpDialogInputSuggestions",
+				name: "com.bosch.sbs.gng8hc.ui.fragment.ValueHelpDialogInputSuggestions",
 				controller: this
 			}).then(function name(oFragment) {
 				this._oValueHelpDialog = oFragment;

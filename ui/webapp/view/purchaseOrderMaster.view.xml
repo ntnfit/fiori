@@ -1,4 +1,4 @@
-<mvc:View controllerName="com.bosch.sbs.gan9hc.ui.controller.purchaseOrderMaster"
+<mvc:View controllerName="com.bosch.sbs.gng8hc.ui.controller.purchaseOrderMaster"
     xmlns="sap.m"
     xmlns:semantic="sap.f.semantic"
     xmlns:mvc="sap.ui.core.mvc"

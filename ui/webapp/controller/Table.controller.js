@@ -28,7 +28,7 @@ sap.ui.define([
 	var SortOrder = library.SortOrder;
 
 	//sap.ui.table.sample.Basic.Controller
-	return MyController.extend("com.bosch.sbs.gan9hc.ui.controller.Table", {
+	return MyController.extend("com.bosch.sbs.gng8hc.ui.controller.Table", {
 		_aTableData: [],
 		_aTableFilters: {},
 		_oTableSort: {},
@@ -196,7 +196,7 @@ sap.ui.define([
 
 			// var oDateFormat = DateFormat.getDateInstance({source: {pattern: "timestamp"}, pattern: "dd/MM/yyyy"});
 
-			// jQuery.ajax(sap.ui.require.toUrl("com/bosch/sbs/gan9hc/ui/mockdata/products.json"), {
+			// jQuery.ajax(sap.ui.require.toUrl("com/bosch/sbs/gng8hc/ui/mockdata/products.json"), {
 			// 	dataType: "json",
 			// 	success: function(oData) {
 			// 		var aTemp1 = [];
@@ -403,7 +403,7 @@ sap.ui.define([
 			if (!this.bSettingDialog) {
 				Fragment.load({
 					id: "bSettingFragment",
-					name: "com.bosch.sbs.gan9hc.ui.fragment.TableSetting",
+					name: "com.bosch.sbs.gng8hc.ui.fragment.TableSetting",
 					controller: this
 				}).then(oDialog => {
 					this.bSettingDialog = oDialog;
@@ -642,7 +642,7 @@ sap.ui.define([
 
 			if (!this._oDialog) {
 				Fragment.load({
-					name: "com.bosch.sbs.gan9hc.ui.fragment.VariantManagement",
+					name: "com.bosch.sbs.gng8hc.ui.fragment.VariantManagement",
 					controller: this
 				}).then(function (oDialog) {
 					this._oDialog = oDialog;

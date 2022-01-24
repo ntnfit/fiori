@@ -1,5 +1,5 @@
 sap.ui.define([
-    "com/bosch/sbs/gan9hc/ui/controller/MyController",
+    "com/bosch/sbs/gng8hc/ui/controller/MyController",
     "sap/ui/model/json/JSONModel",
     "sap/ui/core/mvc/Controller",
     "sap/ui/thirdparty/sinon",

@@ -3,10 +3,10 @@ sap.ui.define([
 ], function (BaseController) {
     "use strict";
 
-    return BaseController.extend("com.bosch.sbs.gan9hc.ui.controller.MyController", {
+    return BaseController.extend("com.bosch.sbs.gng8hc.ui.controller.MyController", {
 
         // used for app router deployment
-        remoteHost: "/comboschsbsgan9hcui/backend", 
+        remoteHost: "/comboschsbsgng8hcui/backend", 
 
         // used for local debugging
         // remoteHost: "https://piperpurchaseorderservice.cfapps.eu10.hana.ondemand.com",
@@ -183,7 +183,7 @@ sap.ui.define([
         }.bind(this),
 
         loadMockbColumnbData: function ( ) {
-            return this.$httpGet(sap.ui.require.toUrl("com/bosch/sbs/gan9hc/ui/mockdata/bColumns.json"), null, null, null);
+            return this.$httpGet(sap.ui.require.toUrl("com/bosch/sbs/gng8hc/ui/mockdata/bColumns.json"), null, null, null);
         },
 
         setBColumns: function (bColumns) {

@@ -3,7 +3,7 @@ sap.ui.define([
 ], function (Opa5) {
 	"use strict";
 
-	return Opa5.extend("com.bosch.sbs.gan9hc.ui.test.integration.arrangements.Startup", {
+	return Opa5.extend("com.bosch.sbs.gng8hc.ui.test.integration.arrangements.Startup", {
 
 		iStartMyApp: function (oOptionsParameter) {
 			var oOptions = oOptionsParameter || {};
@@ -14,7 +14,7 @@ sap.ui.define([
 			// start the app UI component
 			this.iStartMyUIComponent({
 				componentConfig: {
-					name: "com.bosch.sbs.gan9hc.ui",
+					name: "com.bosch.sbs.gng8hc.ui",
 					async: true
 				},
 				hash: oOptions.hash,

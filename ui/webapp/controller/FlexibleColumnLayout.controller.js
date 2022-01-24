@@ -5,7 +5,7 @@ sap.ui.define([
 ], function (MyController, JSONModel, Controller) {
 	"use strict";
 
-	return MyController.extend("com.bosch.sbs.gan9hc.ui.controller.FlexibleColumnLayout", {
+	return MyController.extend("com.bosch.sbs.gng8hc.ui.controller.FlexibleColumnLayout", {
 		onInit: function () {
 			
 		},

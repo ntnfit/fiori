@@ -5,7 +5,7 @@ sap.ui.define([
 ], function (MyController, Fragment, JSONModel) {
 	"use strict";
 
-	return MyController.extend("com.bosch.sbs.gan9hc.ui.controller.App", {
+	return MyController.extend("com.bosch.sbs.gng8hc.ui.controller.App", {
 
 		data: function(){
 			return {
@@ -108,7 +108,7 @@ sap.ui.define([
 				if (context.payload) {
 					if (!this._oDialog) {
 						Fragment.load({
-							name: "com.bosch.sbs.gan9hc.ui.fragment.SessionTimeOutDialog",
+							name: "com.bosch.sbs.gng8hc.ui.fragment.SessionTimeOutDialog",
 							controller: this
 						}).then(function (oDialog) {
 							this._oDialog = oDialog;
@@ -206,7 +206,7 @@ sap.ui.define([
 				// if (!this.NotAuthorizedDialog) {
 				// 	Fragment.load({
 				// 		id: "NotAuthorizedDialogFragment",
-				// 		name: "com.bosch.sbs.gan9hc.ui.fragment.NotAuthorized",
+				// 		name: "com.bosch.sbs.gng8hc.ui.fragment.NotAuthorized",
 				// 		controller: this
 				// 	}).then(oDialog => {
 				// 		this.NotAuthorizedDialog = oDialog;
@@ -223,7 +223,7 @@ sap.ui.define([
 			console.log("do logout")
 			// this.eraseCookie("uid")
 			// this.eraseCookie("uname")
-			window.location.replace("/comboschsbsgan9hcui/do/logout");
+			window.location.replace("/comboschsbsgng8hcui/do/logout");
 			//this.oRouter.navTo("Target_master");
 		},
 

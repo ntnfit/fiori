@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="com.bosch.sbs.gan9hc.ui.controller.Table"
+	controllerName="com.bosch.sbs.gng8hc.ui.controller.Table"
 	xmlns="sap.m"
     xmlns:semantic="sap.f.semantic"
     xmlns:mvc="sap.ui.core.mvc"

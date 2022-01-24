@@ -1,4 +1,4 @@
-<mvc:View controllerName="com.bosch.sbs.gan9hc.ui.controller.NotAuthorized" 
+<mvc:View controllerName="com.bosch.sbs.gng8hc.ui.controller.NotAuthorized" 
     xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m">

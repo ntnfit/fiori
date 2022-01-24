@@ -5,7 +5,7 @@ sap.ui.define([
 function (MyController,JSONModel) {
     'use strict';
 
-    return MyController.extend("com.bosch.sbs.gan9hc.ui.controller.purchaseOrderDetail", {
+    return MyController.extend("com.bosch.sbs.gng8hc.ui.controller.purchaseOrderDetail", {
 
         onInit: function () {
             console.log("purchaseOrderDetail onInit: ");
