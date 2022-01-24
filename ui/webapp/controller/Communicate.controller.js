@@ -3,7 +3,7 @@ sap.ui.define([
 ], function (MyController) {
 	"use strict";
 
-	return MyController.extend("com.bosch.sbs.sbsfioritemplate.ui.controller.Communicate", {
+	return MyController.extend("com.bosch.sbs.gan9hc.ui.controller.Communicate", {
 		onInit: function () {
 			
 		},

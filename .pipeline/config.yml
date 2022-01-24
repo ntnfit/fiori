@@ -12,7 +12,7 @@ steps:
     #inferBranchName: true
     #inferJavaBinaries: true
     #inferJavaLibraries: true
-    #projectKey: 'com.bosch.sbs.sbsfioritemplate'
+    #projectKey: 'com.bosch.sbs.gng8hc'
     #instance: 'MySonar'
     #sonarTokenCredentialsId: 'sonarToken'
     #options:

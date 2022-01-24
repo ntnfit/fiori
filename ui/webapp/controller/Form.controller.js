@@ -10,7 +10,7 @@ sap.ui.define([
 ], function (MyController, Fragment , ValueState, Dialog, DialogType, Button, ButtonType, Text) {
 	"use strict";
 
-	return MyController.extend("com.bosch.sbs.sbsfioritemplate.ui.controller.Form", {
+	return MyController.extend("com.bosch.sbs.gan9hc.ui.controller.Form", {
 
 		onInit: function (oEvent) {
 
@@ -110,7 +110,7 @@ sap.ui.define([
 			if (!pFormFragment) {
 				pFormFragment = Fragment.load({
 					id: oView.getId(),
-					name: "com.bosch.sbs.sbsfioritemplate.ui.fragment." + sFragmentName
+					name: "com.bosch.sbs.gan9hc.ui.fragment." + sFragmentName
 				});
 				this._formFragments[sFragmentName] = pFormFragment;
 			}

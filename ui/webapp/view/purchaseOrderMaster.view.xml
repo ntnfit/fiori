@@ -1,4 +1,4 @@
-<mvc:View controllerName="com.bosch.sbs.sbsfioritemplate.ui.controller.purchaseOrderMaster"
+<mvc:View controllerName="com.bosch.sbs.gan9hc.ui.controller.purchaseOrderMaster"
     xmlns="sap.m"
     xmlns:semantic="sap.f.semantic"
     xmlns:mvc="sap.ui.core.mvc"
@@ -15,7 +15,7 @@
     xmlns:vm="sap.ui.comp.variants" class="sapUiSizeCompact" height="100%">
 
     <f:DynamicPage class="MasterClass" busy="{store>/MasterPageBusy}" busyIndicatorDelay="0" id="dynamicPage_purchaseOrder" headerExpanded="{/headerExpanded}">
-        <!--f:title>
+        <f:title>
             <f:DynamicPageTitle class="master_pageTitle" visible="true">
                 <f:heading>
                     <Title text="Purchase Orders (10)"></Title>
@@ -29,12 +29,12 @@
                         <fb:filterGroupItems id="filterGroupItems_purchaseOrder">
                             <fb:FilterGroupItem groupName="INTERNAL_GROUP" visibleInFilterBar="true" name="PurchaseOrder" label="Purchase Order">
                                 <fb:control>
-                                    <Input id="filterBarPurchaseOrder" value=""/>
+                                    <Input id="filterBarPurchaseOrder" value="{store>/poNumber}"/>
                                 </fb:control>
                             </fb:FilterGroupItem>
                             <fb:FilterGroupItem groupName="INTERNAL_GROUP" visibleInFilterBar="true" name="CompanyCode" label="Company Code">
                                 <fb:control>
-                                    <Input id="filterBarCompanyCode" value=""/>
+                                    <Input id="filterBarCompanyCode" value="{store>/companyCode}"/>
                                 </fb:control>
                             </fb:FilterGroupItem>
                         </fb:filterGroupItems>
@@ -61,6 +61,6 @@
                 <ui:footer>
                 </ui:footer>
             </ui:Table>
-        </f:content-->
+        </f:content>
     </f:DynamicPage>
 </mvc:View>

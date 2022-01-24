@@ -5,66 +5,80 @@ sap.ui.define([
 ], function (MyController, Fragment, JSONModel) {
 	"use strict";
 
-	return MyController.extend("com.bosch.sbs.sbsfioritemplate.ui.controller.App", {
+	return MyController.extend("com.bosch.sbs.gan9hc.ui.controller.App", {
 
-		data: () => {
+		data: function(){
 			return {
 				/**
 				 * The value of key must be same as its route name in manifast.json
 				 */
-				navigationList: [{
+				navigationList: [
+				{	
 					enabled: true,
-					title: "Welcome",
-					key: "welcome",
-					icon: "sap-icon://message-information"
-				},{
-					enabled: true,
-					title: "Table",
-					key: "product",
+					title: "Purchase Orders",
+					key: "purchaseorder",
 					icon: "sap-icon://table-column"
-				}, {
+				},
+				{	
 					enabled: true,
-					expanded: false,
-					title: "Technical Function",
-					key: "",
-					icon: "sap-icon://multi-select",
-					items: [{
-						enabled: true,
-						title: "Subscribe",
-						key: "COMMUNICATE",
-						icon: "sap-icon://sales-order"
-					}],
-				}, {
-					enabled: true,
-					title: "Map Solution",
-					key: "MAP",
-					icon: "sap-icon://map-2"
-				}, {
-					enabled: true,
-					title: "Form",
-					key: "FORM",
-					icon: "sap-icon://map-2"
-				}, {
-					enabled: true,
-					title: "Search",
-					key: "SEARCH",
-					icon: "sap-icon://map-2"
-				}, {
-					enabled: true,
-					title: "ValueHelp",
-					key: "VALUEHELP",
-					icon: "sap-icon://map-2"
-				}, {
-					enabled: true,
-					title: "MultiInput",
-					key: "MULTIINPUT",
-					icon: "sap-icon://map-2"
-				}]
-			}
+					title: "Admin",
+					key: "Admin",
+					icon: "sap-icon://action-settings"
+				}
+				
+				// {
+				// 	enabled: true,
+				// 	title: "Welcome",
+				// 	key: "welcome",
+				// 	icon: "sap-icon://message-information"
+				// },{
+				// 	enabled: true,
+				// 	title: "Table",
+				// 	key: "product",
+				// 	icon: "sap-icon://table-column"
+				// }, {
+				// 	enabled: true,
+				// 	expanded: false,
+				// 	title: "Technical Function",
+				// 	key: "",
+				// 	icon: "sap-icon://multi-select",
+				// 	items: [{
+				// 		enabled: true,
+				// 		title: "Subscribe",
+				// 		key: "COMMUNICATE",
+				// 		icon: "sap-icon://sales-order"
+				// 	}],
+				// }, {
+				// 	enabled: true,
+				// 	title: "Map Solution",
+				// 	key: "MAP",
+				// 	icon: "sap-icon://map-2"
+				// }, {
+				// 	enabled: true,
+				// 	title: "Form",
+				// 	key: "FORM",
+				// 	icon: "sap-icon://map-2"
+				// }, {
+				// 	enabled: true,
+				// 	title: "Search",
+				// 	key: "SEARCH",
+				// 	icon: "sap-icon://map-2"
+				// }, {
+				// 	enabled: true,
+				// 	title: "ValueHelp",
+				// 	key: "VALUEHELP",
+				// 	icon: "sap-icon://map-2"
+				// }, {
+				// 	enabled: true,
+				// 	title: "MultiInput",
+				// 	key: "MULTIINPUT",
+				// 	icon: "sap-icon://map-2"
+				// }
+			]}
 		},
 
 		onInit: function () {
-			this.router = this.getRouter()
+			this.router = this.getRouter();
 			console.log("app.con..", this.getModel("store"));
 			this.setModel(new JSONModel(this.data()), "RootModel")
 			this.userMenuDialog = this.byId("userMenu")
@@ -90,11 +104,11 @@ sap.ui.define([
 
 		onAfterRendering: function () {
 			this.getLoginUserInfo();
-			this.$storeSubscribe("showSessionTimeOut", (cName, tName, context) => {
+			this.storeSubscribe("showSessionTimeOut", function(cName, tName, context){
 				if (context.payload) {
 					if (!this._oDialog) {
 						Fragment.load({
-							name: "com.bosch.sbs.sbsfioritemplate.ui.fragment.SessionTimeOutDialog",
+							name: "com.bosch.sbs.gan9hc.ui.fragment.SessionTimeOutDialog",
 							controller: this
 						}).then(function (oDialog) {
 							this._oDialog = oDialog;
@@ -105,7 +119,10 @@ sap.ui.define([
 						this._oDialog.open();
 					}
 				} 
-			});
+			}.bind(this));
+
+			// this.byId("homePageSideNav").setSelectedKey("purchaseorder");
+			// this.byId("homePageSideNav").fireItemSelect();
 		},
 
 		onToggleNavigationPress: function () {
@@ -128,7 +145,7 @@ sap.ui.define([
 		},
 
 		getLoginUserInfo: function () {
-			this.getUserInfo().then((result) => {
+			this.getUserInfo().then(function(result) {
 				this.setUser(result);
 				let userName = this.getUser().userName;
 				userName = userName.toUpperCase();
@@ -139,7 +156,7 @@ sap.ui.define([
 				console.log("userName: " + this.getUserName());
 				console.log("authorizations: " + authorizations);
 				this.checkAuthorizationValid();
-			}).catch((err) => {
+			}.bind(this)).catch(function(err) {
 				console.log(err);
 			});
 		},
@@ -189,7 +206,7 @@ sap.ui.define([
 				// if (!this.NotAuthorizedDialog) {
 				// 	Fragment.load({
 				// 		id: "NotAuthorizedDialogFragment",
-				// 		name: "com.bosch.sbs.sbsfioritemplate.ui.fragment.NotAuthorized",
+				// 		name: "com.bosch.sbs.gan9hc.ui.fragment.NotAuthorized",
 				// 		controller: this
 				// 	}).then(oDialog => {
 				// 		this.NotAuthorizedDialog = oDialog;
@@ -206,7 +223,7 @@ sap.ui.define([
 			console.log("do logout")
 			// this.eraseCookie("uid")
 			// this.eraseCookie("uname")
-			window.location.replace("/comboschsbssbsfioritemplateui/do/logout");
+			window.location.replace("/comboschsbsgan9hcui/do/logout");
 			//this.oRouter.navTo("Target_master");
 		},
 

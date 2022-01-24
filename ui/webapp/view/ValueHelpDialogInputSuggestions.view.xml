@@ -1,4 +1,4 @@
-<mvc:View height="100%" controllerName="com.bosch.sbs.sbsfioritemplate.ui.controller.ValueHelpDialogInputSuggestions"
+<mvc:View height="100%" controllerName="com.bosch.sbs.gan9hc.ui.controller.ValueHelpDialogInputSuggestions"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:layout="sap.ui.layout"
 	xmlns:form="sap.ui.layout.form"

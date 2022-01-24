@@ -7,7 +7,7 @@ sap.ui.define([
 
 	Opa5.extendConfig({
 		arrangements: new Startup(),
-		viewNamespace: "com.bosch.sbs.sbsfioritemplate.ui.view.",
+		viewNamespace: "com.bosch.sbs.gan9hc.ui.view.",
 		autoWait: true
 	});
 });

@@ -7,6 +7,30 @@ sap.ui.define([
 		onTheAppPage: {
 
 			actions: {
+                iClickOnPurchaseOrderMenuItem: function() {
+                    return this.waitFor({
+                        id: "homePageSideNav",
+                        controlType: "sap.tnt.SideNavigation",
+                        viewName: sViewName,
+                        success: function(oControl) {
+                            oControl.setSelectedKey("purchaseorder");
+                            oControl.fireItemSelect();
+                            Opa5.assert.ok(true, "Master page opened");
+                        }
+                    });
+                },
+                iClickOnAdminMenuItem: function() {
+                    return this.waitFor({
+                        id: "homePageSideNav",
+                        controlType: "sap.tnt.SideNavigation",
+                        viewName: sViewName,
+                        success: function(oControl) {
+                            oControl.setSelectedKey("Admin");
+                            oControl.fireItemSelect();
+                            Opa5.assert.ok(true, "Admin page opened");
+                        }
+                    });
+                },
                 iClickOnUserMenu: function() {
                     return this.waitFor({
                         id: "usermenubtn",

@@ -7,7 +7,7 @@ sap.ui.define([
     "use strict";
 
     var oMockServer,
-        _sAppPath = "com/bosch/sbs/sbsfioritemplate/ui/",
+        _sAppPath = "com/bosch/sbs/gan9hc/ui/",
         _sJsonFilesPath = _sAppPath + "localService/mockdata";
 
     var oMockServerInterface = {

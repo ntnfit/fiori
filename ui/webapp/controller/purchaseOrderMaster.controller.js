@@ -18,34 +18,32 @@ sap.ui.define([
 	function (MyController, JSONModel, Log, MessageToast, DateFormat, jQuery, ValueState, Dialog, DialogType, Button, ButtonType, Text, SearchField, Fragment, Form) {
 		'use strict';
 		let that;
-		return MyController.extend("com.bosch.sbs.sbsfioritemplate.ui.controller.purchaseOrderMaster", {
+		return MyController.extend("com.bosch.sbs.gan9hc.ui.controller.purchaseOrderMaster", {
 			onInit: function () {
 				console.log("Master: onInit() at ", new Date());
 			},
 
-			onAfterRendering: function () {
-				console.log("Master: onAfterRendering() at ", new Date());
-
-				let detailId = this.getDetailId();
-				if (detailId === null || typeof detailId === 'undefined') {
-					this.initData();
-				} else {
-				}
+			onBeforeRendering: function(){
+				this.initData();
 			},
 
-			initData: function () {
-			},
-
-			loadPurchaseOrder: function (oEvent) {
+			initData: function (oEvent) {
 				this.setMasterPageBusy(true);
-				this.getPurchaseOrdersByFilters().then((result) => {
+				this.getPurchaseOrdersByFilters().then(function(result) {
 					console.log("Get Purchase orders: " + result);
 					this.setPurchaseOrders(result);
-				}).catch((err) => {
-					//console.log(err)
-				}).finally(() => {
+					if(this.getDetailId()){
+						const selectedPurchaseOrder = result.find(function(e) {
+							return e.PurchaseOrder === this.getDetailId();
+						}.bind(this));
+						this.setSelectedPurchaseOrder(selectedPurchaseOrder);
+					}
+					console.log("test");
+				}.bind(this)).catch(function(err){
+					console.log(err);
+				}).finally(function() {
 					this.setMasterPageBusy(false);
-				});
+				}.bind(this));
 			},
 
 			onPurchaseOrderPress: function (oEvent) {
@@ -68,9 +66,35 @@ sap.ui.define([
 				console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>");
 				console.log("                           ");
 
-				let oRouter = this.getRouter();
-				oRouter.navTo("purchaseorderDetail", { detailId: this.getDetailId() });
+				this.getRouter().navTo("purchaseorderDetail", { detailId: this.getDetailId() });
+			},
+
+			onFilterBarSearch: function(oEvent){
+				var oStore = this.getModel("store");
+				var oBinding = this.byId("tableMaster").getBinding('rows');
+				var aFilters = [];
+
+				var sPoNumber = oStore.getProperty("/poNumber");
+				if(sPoNumber){
+					aFilters.push(new sap.ui.model.Filter({
+						path: "PurchaseOrder",
+						operator: sap.ui.model.FilterOperator.Contains,
+						value1: sPoNumber
+					}));
+				}
+
+				var sCompanyCode = oStore.getProperty("/companyCode");
+				if(sCompanyCode){
+					aFilters.push(new sap.ui.model.Filter({
+						path: "CompanyCode",
+						operator: sap.ui.model.FilterOperator.Contains,
+						value1: sCompanyCode
+					}));
+				}
+				
+				oBinding.filter(aFilters);
 			}
+
 
 			// handleErrorDialogPress: function (errMessage) {
 			// 	const dialog = new Dialog({

@@ -3,7 +3,7 @@ sap.ui.define([
 ], function (MyController) {
 	"use strict";
 
-	return MyController.extend("com.bosch.sbs.sbsfioritemplate.ui.controller.CommunicateRight", {
+	return MyController.extend("com.bosch.sbs.gan9hc.ui.controller.CommunicateRight", {
 		data: () => {
 			const n1 = Math.ceil(Math.random() * 100)
 			const n2 = Math.ceil(Math.random() * 100)

@@ -1,13 +1,13 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
-    "com/bosch/sbs/sbsfioritemplate/ui/model/models",
+    "com/bosch/sbs/gan9hc/ui/model/models",
 	"sap/f/FlexibleColumnLayoutSemanticHelper",
 	'sap/f/IllustrationPool'
 ], function (UIComponent, Device, models,FlexibleColumnLayoutSemanticHelper, IllustrationPool) {
 	"use strict";
 
-	return UIComponent.extend("com.bosch.sbs.sbsfioritemplate.ui.Component", {
+	return UIComponent.extend("com.bosch.sbs.gan9hc.ui.Component", {
 
 		metadata: {
 			manifest: "json"

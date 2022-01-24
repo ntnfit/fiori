@@ -10,7 +10,7 @@ sap.ui.define([
 ], function (MyController, Fragment , ValueState, Dialog, DialogType, Button, ButtonType, Text) {
 	"use strict";
 
-	return MyController.extend("com.bosch.sbs.sbsfioritemplate.ui.controller.Search", {
+	return MyController.extend("com.bosch.sbs.gan9hc.ui.controller.Search", {
 
 		onInit: function (oEvent) {
 		},

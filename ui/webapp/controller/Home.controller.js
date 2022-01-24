@@ -7,7 +7,7 @@ sap.ui.define([
 	function (MyController, Fragment, Dialog, DialogType, UIComponent, FlexibleColumnLayoutSemanticHelper) {
 		"use strict";
 
-		return MyController.extend("com.bosch.sbs.sbsfioritemplate.ui.controller.Home", {
+		return MyController.extend("com.bosch.sbs.gan9hc.ui.controller.Home", {
 			onInit: function () {
 				this.getRouter().initialize();
 				this.oRouter = this.getOwnerComponent().getRouter();
@@ -34,7 +34,7 @@ sap.ui.define([
 				const oButton = oEvent.getSource();
 				if (!this._actionSheet) {
 					this._actionSheet = sap.ui.xmlfragment(
-						"com.bosch.sbs.sbsfioritemplate.ui.fragment.LanguageList",
+						"com.bosch.sbs.gan9hc.ui.fragment.LanguageList",
 						this
 					);
 					this.getView().addDependent(this._actionSheet);
@@ -57,7 +57,7 @@ sap.ui.define([
 				if (!this.languageDialog) {
 					Fragment.load({
 						id: "languageFragment",
-						name: "com.bosch.sbs.sbsfioritemplate.ui.fragment.LanguagePreference",
+						name: "com.bosch.sbs.gan9hc.ui.fragment.LanguagePreference",
 						controller: this
 					}).then(oDialog => {
 						this.languageDialog = oDialog;

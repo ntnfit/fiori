@@ -1,0 +1,13 @@
+<mvc:View
+	height="100%"
+	controllerName="com.bosch.sbs.gng8hc.ui.controller.Admin"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page
+		id="page"
+		showHeader="true" >
+		<customHeader>
+			<Text text="{store>/userName}"/>
+		</customHeader>
+	</Page>
+</mvc:View>

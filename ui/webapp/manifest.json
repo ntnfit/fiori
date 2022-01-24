@@ -1,7 +1,7 @@
 {
 	"_version": "1.12.0",
 	"sap.app": {
-		"id": "com.bosch.sbs.sbsfioritemplate.ui",
+		"id": "com.bosch.sbs.gan9hc.ui",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"applicationVersion": {
@@ -35,7 +35,7 @@
 	"sap.ui5": {
 		"flexEnabled": false,
 		"rootView": {
-			"viewName": "com.bosch.sbs.sbsfioritemplate.ui.view.App",
+			"viewName": "com.bosch.sbs.gan9hc.ui.view.App",
 			"type": "XML",
 			"async": true,
 			"id": "App"
@@ -57,7 +57,7 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "com.bosch.sbs.sbsfioritemplate.ui.i18n.i18n"
+					"bundleName": "com.bosch.sbs.gan9hc.ui.i18n.i18n"
 				}
 			},
 			"store": {
@@ -79,7 +79,7 @@
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
 				"async": true,
-				"viewPath": "com.bosch.sbs.sbsfioritemplate.ui.view",
+				"viewPath": "com.bosch.sbs.gan9hc.ui.view",
 				"controlAggregation": "pages",
 				"controlId": "app",
 				"clearControlAggregation": false
@@ -108,14 +108,14 @@
 				},
 				{
 					"pattern": "purchaseorder",
-					"name": "PURCHASEORDER",
+					"name": "purchaseorder",
 					"target": [
 						"Target_master"
 					]
 				},
 				{
 					"pattern": "purchaseorder/{detailId}",
-					"name": "PURCHASEORDER_DETAIL",
+					"name": "purchaseorderDetail",
 					"target": [
 						"Target_master",
 						"Target_detail"
@@ -168,6 +168,13 @@
 					"target": [
 						"MultiInput"
 					]
+				},
+				{
+					"pattern": "admin",
+					"name": "Admin",
+					"target": [
+						"Form"
+					]
 				}
 				
 			],
@@ -189,7 +196,7 @@
 					"controlAggregation": "pages"
 				},
 				"Target_master": {
-					"viewName": "BillingPage_Master",
+					"viewName": "purchaseOrderMaster",
 					"viewLevel": 3,
 					"controlAggregation": "beginColumnPages",
 					"controlId": "fcl",

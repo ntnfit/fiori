@@ -1,15 +1,16 @@
 sap.ui.define([
-    "com/bosch/sbs/sbsfioritemplate/ui/controller/purchaseOrderMaster.controller",
+    "com/bosch/sbs/gan9hc/ui/controller/purchaseOrderMaster.controller",
     "sap/ui/model/json/JSONModel",
     "sap/ui/core/mvc/Controller",
     "sap/ui/thirdparty/sinon",
 	"sap/ui/thirdparty/sinon-qunit"
-], function (poMasterController,JSONModel,Controller) {
+], function (purchaseOrderMaster,JSONModel,Controller) {
      "use strict";
 
     QUnit.module("PurchaseOrderMasterController",{
         before : function(){
-            this.oPOMController = new poMasterController();
+            this.oPOMController = new purchaseOrderMaster();
+            console.log("oPOMController:", this.oPOMController, this.oPOMController.getMetadata().getName());
             this.models = {};
             var oViewStub = {
                 setModel: function(model, name) {
@@ -31,23 +32,19 @@ sap.ui.define([
     });
 
     QUnit.test("I should test the PurchaseOrderMaster controller onInit()", function (assert) {
-		var opoMasterController = new poMasterController();
-		opoMasterController.onInit();
-		assert.ok(opoMasterController);
+		var opurchaseOrderMaster = new purchaseOrderMaster();
+		opurchaseOrderMaster.onInit();
+
+		assert.ok(opurchaseOrderMaster);
     });
 
-    QUnit.test("I should test the PurchaseOrderMaster controller onAfterRendering()", function (assert) {
-
+    QUnit.test("I should test the PurchaseOrderMaster controller onBeforeRendering()", function (assert) {
         var oPOMController = this.oPOMController;
         var oModel = new JSONModel();
         oPOMController.setModel(oModel, "store");
-        var oMyViewModel = oPOMController.getModel("store");
 
-		oPOMController.onAfterRendering();
+		oPOMController.onBeforeRendering();
 		assert.ok(oPOMController);
     });
-
-    
-    
 
 });

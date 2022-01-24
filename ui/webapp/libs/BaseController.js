@@ -7,15 +7,15 @@ sap.ui.define([
 
 	const $ = jQuery;
 
-	// const devMode = false;
-	// const authToken = {
-	// 	Authorization: ""
-	// };
-
-	const devMode = true;
+	const devMode = false;
 	const authToken = {
-		Authorization: "Bearer eyJhbGciOiJSUzI1NiIsImprdSI6Imh0dHBzOi8vYm9zY2gtY2lkYWU0LXM0eC1kZXYuYXV0aGVudGljYXRpb24uZXUxMC5oYW5hLm9uZGVtYW5kLmNvbS90b2tlbl9rZXlzIiwia2lkIjoia2V5LWlkLTEiLCJ0eXAiOiJKV1QifQ.eyJqdGkiOiI1N2YxOWE4ZGY3NmE0YzNmOGY4ZGIyZjRiMDdkMmI3MCIsImV4dF9hdHRyIjp7ImVuaGFuY2VyIjoiWFNVQUEiLCJzdWJhY2NvdW50aWQiOiIxOTU2MGJiYS04OGY2LTRmOTktOGIzZS03MDBjY2I2MmM5NmUiLCJ6ZG4iOiJib3NjaC1jaWRhZTQtczR4LWRldiJ9LCJ4cy5zeXN0ZW0uYXR0cmlidXRlcyI6eyJ4cy5yb2xlY29sbGVjdGlvbnMiOlsiU3ViYWNjb3VudCBTZXJ2aWNlIEFkbWluaXN0cmF0b3IiLCJHVFNfSGFja2F0aG9uX0FkbWluIiwiUkJfU1lTX1RNU19PUF9NVEFSX0JUMTAyUDBfQlQxMDJQMDAiLCJBcHBMaWJyYXJ5X09BdXRoMiIsIkF1dG9NZXRhbFByaWNlIEFkbWluaXN0cmF0b3IiLCJTdWJhY2NvdW50IFZpZXdlciIsIkdUU19UZXN0IiwiQnVzaW5lc3NfQXBwbGljYXRpb25fU3R1ZGlvX0RldmVsb3BlciIsIlJCX1NZU19UTVNfT1BfTVRBUl9CVDEwM1EwX0JUMTAzUTAwIiwiZGVsdGFfdmlld2VyIiwiQ2xvdWQgQ29ubmVjdG9yIEFkbWluaXN0cmF0b3IiLCJSQl9BcHBMaWJyYXJ5X0FkbWluIiwiUkJfU0JTQ29FX3Nic2Zpb3JpdGVtcGxhdGUiLCJHVFNfQWRtaW4iLCJSQl9UcmFuc3BvcnRfRXhwb3J0X09wZXJhdG9yIiwiUkJfU1lTX1RNU19PUF9NVEFSX0JUMTAyUTBfQlQxMDJRMDAiLCJTdWJhY2NvdW50IEFkbWluaXN0cmF0b3IiLCJSQl9VRF9TQlNGaW9yaVRlbXBsYXRlX0FkbWluIiwiUkJfVHJhbnNwb3J0X0ltcG9ydF9PcGVyYXRvciIsIldlYklERV9EZXZlbG9wZXIiXX0sImdpdmVuX25hbWUiOiJDQ042U1pIIiwieHMudXNlci5hdHRyaWJ1dGVzIjp7fSwiZmFtaWx5X25hbWUiOiJ0aGlzLWRlZmF1bHQtd2FzLW5vdC1jb25maWd1cmVkLmludmFsaWQiLCJzdWIiOiI2NDU0MjU2MS0yYTYzLTQyMjctODBlMi0zNDg1MjlhNmRhMjAiLCJzY29wZSI6WyJzYnNmaW9yaXRlbXBsYXRlWFNBUFAhdDEyNzE4LmFkbWluIiwib3BlbmlkIl0sImNsaWVudF9pZCI6InNiLXNic2Zpb3JpdGVtcGxhdGVYU0FQUCF0MTI3MTgiLCJjaWQiOiJzYi1zYnNmaW9yaXRlbXBsYXRlWFNBUFAhdDEyNzE4IiwiYXpwIjoic2Itc2JzZmlvcml0ZW1wbGF0ZVhTQVBQIXQxMjcxOCIsImdyYW50X3R5cGUiOiJhdXRob3JpemF0aW9uX2NvZGUiLCJ1c2VyX2lkIjoiNjQ1NDI1NjEtMmE2My00MjI3LTgwZTItMzQ4NTI5YTZkYTIwIiwib3JpZ2luIjoiYXBjbWlzam41LmFjY291bnRzLm9uZGVtYW5kLmNvbSIsInVzZXJfbmFtZSI6ImNjbjZzemgiLCJlbWFpbCI6IkNDTjZTWkhAdGhpcy1kZWZhdWx0LXdhcy1ub3QtY29uZmlndXJlZC5pbnZhbGlkIiwiYXV0aF90aW1lIjoxNjM2NDIwMDU4LCJyZXZfc2lnIjoiNDYwOTg4OWMiLCJpYXQiOjE2MzY0MjAwNjAsImV4cCI6MTYzNjQ2MzI2MCwiaXNzIjoiaHR0cDovL2Jvc2NoLWNpZGFlNC1zNHgtZGV2LmxvY2FsaG9zdDo4MDgwL3VhYS9vYXV0aC90b2tlbiIsInppZCI6IjE5NTYwYmJhLTg4ZjYtNGY5OS04YjNlLTcwMGNjYjYyYzk2ZSIsImF1ZCI6WyJzYnNmaW9yaXRlbXBsYXRlWFNBUFAhdDEyNzE4Iiwib3BlbmlkIiwic2Itc2JzZmlvcml0ZW1wbGF0ZVhTQVBQIXQxMjcxOCJdfQ.h9s7Ah-Dc0UPuZUmsAe6LbaOM9pnDsaqjorT67HuI1GNk0E5VVC2MM0ysdpxQvQhHwQuxgoXFfFxMmdVUN7dLayhxaem0QwCoXXDNi4tK76VvGuo7JK8jjul4Lhhbs43r5bDbQQfAX28mL1VHXexYeSXX6YF7xXJsy6SeCQHOzI5_F-vGMkXnDcdrpmpe7l8JxQnckVxhSkGa-49WUgUp5Mtull4_8IPzDk0aKhG4ZBt2h0eybehPDSpX5kKNAca2dHzFLoVNBluM_JpswmYblEQVyHOmbs1NRYYaw7B-mJYQp7k4rv_N9hR4Q4C6zsDy_fmqK9_0bptJFZ0l3W7IAKO1xWGHSxv6lhnApkkZPfGFj8EXMj3rphUeMRElID6NlS3mjljZG0uSyPL2RxIhX41i9PNOPKspTt3CqvKfCoEA9pust4cLmYvOf71gHKxE-NTI-ktarI6u0fBdRpW1RB5B6uyZccUEUcKuQyf1iXk_CCW-euGyN8EupyqTDcQBx3xBCm36jpHjdVZYSQanqiddtaADRtx9O8k-rwvTVzAhbBVeZ4CNfAcCn9sDVJY5UM2XQnEw0Uy2VDakq-iAMsHUFnF8sKz65N7n60cSyEDAWdscyrAIzfEwQqFbMM-3se_NQ5b1x-xyxzhchWydSu4aMfeY87tMF3rZIbRB58"
+		Authorization: ""
 	};
+
+	// const devMode = true;
+	// const authToken = {
+	// 	Authorization: "Bearer eyJhbGciOiJSUzI1NiIsImprdSI6Imh0dHBzOi8vYm9zY2gtY2lkYXYzOS10cmFpbmluZy1zYW5kYm94LmF1dGhlbnRpY2F0aW9uLmV1MTAuaGFuYS5vbmRlbWFuZC5jb20vdG9rZW5fa2V5cyIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiM2QyN2I2OWJjYWU0OGY3YjUyMWRlMmFkNTdiYThkZCIsImV4dF9hdHRyIjp7ImVuaGFuY2VyIjoiWFNVQUEiLCJzdWJhY2NvdW50aWQiOiJiMDA1Zjg3YS1lMTJiLTQzZWItYTM3Zi0wMjUyMjJjZTU4OTkiLCJ6ZG4iOiJib3NjaC1jaWRhdjM5LXRyYWluaW5nLXNhbmRib3gifSwieHMuc3lzdGVtLmF0dHJpYnV0ZXMiOnsieHMucm9sZWNvbGxlY3Rpb25zIjpbIlN1YmFjY291bnQgU2VydmljZSBBZG1pbmlzdHJhdG9yIiwiZ2FuOWhjLXJvbGUtY29sbGVjdGlvbiIsIlJCX1VEX3BpcGVyUHVyY2hhc2VPcmRlcl9WaWV3ZXIiLCJEZXN0aW5hdGlvbiBBZG1pbmlzdHJhdG9yIiwiUkJfVURfcGlwZXJQdXJjaGFzZU9yZGVyX0VkaXRvciIsIlN1YmFjY291bnQgVmlld2VyIiwiVXNlciAmIFJvbGUgQWRtaW4iLCJSQl9VRF9waXBlclB1cmNoYXNlT3JkZXJfQWRtaW4iLCJCdXNpbmVzc19BcHBsaWNhdGlvbl9TdHVkaW9fRGV2ZWxvcGVyIiwiQ2xvdWQgQ29ubmVjdG9yIEFkbWluaXN0cmF0b3IiLCJDbG91ZF9Db25uZWN0b3JfYWRtaW4iLCJDb25uZWN0aXZpdHkgYW5kIERlc3RpbmF0aW9uIEFkbWluaXN0cmF0b3IiXX0sImdpdmVuX25hbWUiOiJOYW0iLCJ4cy51c2VyLmF0dHJpYnV0ZXMiOnt9LCJmYW1pbHlfbmFtZSI6Ik5ndXllbiIsInN1YiI6IjczYWM5MjhlLTYwMWMtNDZmZi1hYjJhLWZmNjIwN2U2YmFiZiIsInNjb3BlIjpbInBpcGVyUHVyY2hhc2VPcmRlciF0MjYwMDcuZWRpdCIsIm9wZW5pZCIsInBpcGVyUHVyY2hhc2VPcmRlciF0MjYwMDcuYWRtaW4iLCJwaXBlclB1cmNoYXNlT3JkZXIhdDI2MDA3LnZpZXciXSwiY2xpZW50X2lkIjoic2ItcGlwZXJQdXJjaGFzZU9yZGVyIXQyNjAwNyIsImNpZCI6InNiLXBpcGVyUHVyY2hhc2VPcmRlciF0MjYwMDciLCJhenAiOiJzYi1waXBlclB1cmNoYXNlT3JkZXIhdDI2MDA3IiwiZ3JhbnRfdHlwZSI6ImF1dGhvcml6YXRpb25fY29kZSIsInVzZXJfaWQiOiI3M2FjOTI4ZS02MDFjLTQ2ZmYtYWIyYS1mZjYyMDdlNmJhYmYiLCJvcmlnaW4iOiJsZGFwIiwidXNlcl9uYW1lIjoiTmFtLk5ndXllblZhbkB2bi5ib3NjaC5jb20iLCJlbWFpbCI6Im5hbS5uZ3V5ZW52YW5Adm4uYm9zY2guY29tIiwiYXV0aF90aW1lIjoxNjQwOTI2NjkzLCJyZXZfc2lnIjoiNzQ1YmMxMjAiLCJpYXQiOjE2NDA5MjY2OTUsImV4cCI6MTY0MDkzMDI5NSwiaXNzIjoiaHR0cDovL2Jvc2NoLWNpZGF2MzktdHJhaW5pbmctc2FuZGJveC5sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJiMDA1Zjg3YS1lMTJiLTQzZWItYTM3Zi0wMjUyMjJjZTU4OTkiLCJhdWQiOlsicGlwZXJQdXJjaGFzZU9yZGVyIXQyNjAwNyIsIm9wZW5pZCIsInNiLXBpcGVyUHVyY2hhc2VPcmRlciF0MjYwMDciXX0.eO9NKR2KU3KoECMbLRNGPfv95aOVQLQ9kle_jjKCnZMZeDEtvc7id-d4XLQyv5BH3ACGhyl7Hz8i_sr60tdwE4GsBKRaF6AUo63We5UOLzU3CMOClL9R3RRlXQUeR_XH5XljGgtj47xAaq6EOr_qiDwmVPTrhlVmtA47vhCqGlKJGy3E0QP9SIdMkvCOCDZcXcE0UyCBgoC6omi_vl2ORgd_zmXEDWKhSJE6XKPdLuXa5Q8esYMoVnD-5ZdnIuhMTgZ9ZJqFdm_u4GL-wtnv-bUBiRapXZvkPR7-lMJQsx4vORtkJdnkGElRjv7m_w8tyABTCThRL_AQLVv7ELr-L2i7msV3-8FevTBUl0QMKkynjBj0JAdJTYHSjZHfgPvJ9UK-i2_cLW-LdgfsMz3uTGq4RNfISQEN5tw0df-D-cukqp3wAsxIg3dG3PG4poxENoX1wabR84YS8EAhliByQ70I6TYsGtxTFhFW3A2uFaXgsQfXkNURAwFESxW2slvf1-EpWGHubXg43kRjkvXdYJ-ACLOQpleuSPYYUAHAwfgo6XioIG5OZjKhid559EB1jJ5EylUJQKI_3FU49EhSPVr3okGZ5mUz8moV-ndYBuC8QLq3qnjZhcvmBoE0groc_VIpeBPDGOZHOguFevubMYzWSOaEOVRJbdhM9FBQ0gY"
+	// };
 	
 	return Controller.extend("com.bosch.FioriTemplate.libs.BaseController", {
 		/**
@@ -79,12 +79,12 @@ sap.ui.define([
          * @param {string} name - property name of store
          */
         _getter: function (name) {
-            return this.getModel("store").getProperty(`/${name}`);
+            return this.getModel("store").getProperty("/"+name);
         },
 
         _setter: function (name, value) {
             //debugger;
-            this.getModel("store").setProperty(`/${name}`, value);
+            this.getModel("store").setProperty("/"+name, value);
         },
 
 		/**
@@ -119,7 +119,8 @@ sap.ui.define([
 		 * @public
 		 * @param { string } local - i18n [zh, de, en]
 		 */
-		setAppLanguage: function (local = "en") {
+		setAppLanguage: function (local) {
+			if(!local) local = "en";
 			sap.ui.getCore().getConfiguration().setLanguage(local);
 		},
 
@@ -139,12 +140,12 @@ sap.ui.define([
 			this.resetInactivityTimeout();
 			url = this._spliceURL(url, path, params);
 			header = this._mergeHeader(header);
-			return new Promise((resolve, reject) => {
+			return new Promise(function(resolve, reject){
 				$.ajax({
 					url: url,
 					type: "GET",
 					headers: header,
-					success: res => {
+					success: function(res) {
 						let code = res.code + "";
 						if (typeof (res.code) == "undefined") {
 							resolve(res);
@@ -155,11 +156,11 @@ sap.ui.define([
 						}
 
 					},
-					error: res => {
+					error: function(res){
 						reject(res);
 					}
 				});
-			});
+			}.bind(this));
 		},
 
 		
@@ -176,13 +177,13 @@ sap.ui.define([
 			this.resetInactivityTimeout();
 			url = this._spliceURL(url, path, params);
 			header = this._mergeHeader(header);
-			return new Promise((resolve, reject) => {
+			return new Promise(function(resolve, reject){
 				$.ajax({
 					url: url,
 					type: "POST",
 					headers: header,
 					data: JSON.stringify(body),
-					success: res => {
+					success: function(res){
 						let code = res.code + "";
 						if (typeof (res.code) == "undefined") {
 							resolve(res);
@@ -192,11 +193,11 @@ sap.ui.define([
 							reject(res);
 						}
 					},
-					error: res => {
+					error: function(res) {
 						reject(res);
 					}
 				});
-			});
+			}.bind(this));
 		},
 
 		/**
@@ -211,14 +212,14 @@ sap.ui.define([
 				fd.append(key, fileobj[key]);
 			}
 			this.resetInactivityTimeout();
-			return new Promise((resolve, reject) => {
+			return new Promise(function(resolve, reject){
 				$.ajax({
 					method: "POST",
 					data: fd,
 					url: url,
 					processData: false,
 					contentType: false,
-					success: res => {
+					success: function(res){
 						let code = res.code + "";
 						if (typeof (res.code) == "undefined") {
 							resolve(res);
@@ -228,11 +229,11 @@ sap.ui.define([
 							reject(res);
 						}
 					},
-					error: res => {
+					error: function(res){
 						reject(res);
 					}
 				});
-			});
+			}.bind(this));
 		},
 
 		/**
@@ -248,13 +249,13 @@ sap.ui.define([
 			url = this._spliceURL(url, path, params);
 			header = this._mergeHeader(header);
 			this.resetInactivityTimeout();
-			return new Promise((resolve, reject) => {
+			return new Promise(function(resolve, reject){
 				$.ajax({
 					url: url,
 					type: "PATCH",
 					headers: header,
 					data: JSON.stringify(body),
-					success: res => {
+					success: function(res) {
 						let code = res.code + "";
 						if (typeof (res.code) == "undefined") {
 							resolve(res);
@@ -264,11 +265,11 @@ sap.ui.define([
 							reject(res);
 						}
 					},
-					error: res => {
+					error: function(res) {
 						reject(res);
 					}
 				});
-			});
+			}.bind(this));
 		},
 
 		/**
@@ -284,13 +285,13 @@ sap.ui.define([
 			url = this._spliceURL(url, path, params);
 			header = this._mergeHeader(header);
 			this.resetInactivityTimeout();
-			return new Promise((resolve, reject) => {
+			return new Promise(function(resolve, reject){
 				$.ajax({
 					url: url,
 					type: "DELETE",
 					headers: header,
 					data: JSON.stringify(body),
-					success: res => {
+					success: function(res){
 						let code = res.code + "";
 						if (typeof (res.code) == "undefined") {
 							resolve(res);
@@ -300,11 +301,11 @@ sap.ui.define([
 							reject(res);  // code: 301, msg: "aaa"
 						}
 					},
-					error: res => {
+					error: function(res) {
 						reject(res);
 					}
 				});
-			});
+			}.bind(this));
 		},
 
 		_spliceURL: function (url, path, params) {

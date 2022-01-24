@@ -5,7 +5,8 @@
         "./pages/App",
         "./pages/Fcl",
         "./pages/Master",
-        "./pages/Details"
+        "./pages/Details",
+        "./pages/Admin"
 	], function (opaTest) {
 		"use strict";
 
@@ -13,21 +14,23 @@
 
 		opaTest("Should see the initial page of the app", function (Given, When, Then) {
 			// Arrangements
-			Given.iStartMyApp();
+			Given.iStartMyApp({autoWait: false});
             
 			// Assertions
             Then.onTheAppPage.iShouldSeeTheApp();
-            Then.onTheFclPage.iShouldSeeFclLayout();
+            // Then.onTheFclPage.iShouldSeeFclLayout();
             
 			//Cleanup
-			//Then.iTeardownMyApp();
+			// Then.iTeardownMyApp();
         });
 
         opaTest("Should see the master page", function (Given, When, Then) {
+            When.onTheAppPage.iClickOnPurchaseOrderMenuItem();
 			// Assertions
 			Then.onTheMasterPage.iShouldSeeTheMaster();
             //Purchase order table
             Then.onTheMasterPage.iShouldSeePurchaseOrderTableWithCount(10);
+            // Then.iTeardownMyApp();
         });
  
         opaTest("Select the purchase order from the table should see the details", function (Given, When, Then) {
@@ -51,6 +54,12 @@
         opaTest("Should open user menu dialog", function(Given, When, Then) {
             When.onTheAppPage.iClickOnUserMenu();
             Then.onTheAppPage.iShouldSeeUserOption();
+            // Then.iTeardownMyApp();
+        });
+
+        opaTest("Should open Admin page", function(Given, When, Then) {
+            When.onTheAppPage.iClickOnAdminMenuItem();
+            Then.onTheAdminPage.iShouldSeeTheAdmin();
 
             Then.iTeardownMyApp();
         });

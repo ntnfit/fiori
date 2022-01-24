@@ -1,5 +1,5 @@
 sap.ui.define([
-    "com/bosch/sbs/sbsfioritemplate/ui/controller/MyController",
+    "com/bosch/sbs/gan9hc/ui/controller/MyController",
     "sap/ui/model/json/JSONModel",
     "sap/ui/core/mvc/Controller",
     "sap/ui/thirdparty/sinon",
@@ -38,8 +38,8 @@ sap.ui.define([
         oMyController.setModel(oModel, "store");
         var oMyViewModel = oMyController.getModel("store");
 
-        oMyViewModel.setProperty(`/appTitle`, "Side-by-Side");
-        assert.strictEqual(oMyController._getter("appTitle"), oMyViewModel.getProperty(`/appTitle`));
+        oMyViewModel.setProperty("/appTitle", "Side-by-Side");
+        assert.strictEqual(oMyController._getter("appTitle"), oMyViewModel.getProperty("/appTitle"));
     });
 
 
@@ -51,7 +51,7 @@ sap.ui.define([
         var oMyViewModel = oMyController.getModel("store");
 
         oMyController._setter("appTitle", "Side-by-Side Fiori");
-        assert.strictEqual(oMyController._getter("appTitle"), oMyViewModel.getProperty(`/appTitle`));
+        assert.strictEqual(oMyController._getter("appTitle"), oMyViewModel.getProperty("/appTitle"));
     });
 
 
@@ -62,8 +62,8 @@ sap.ui.define([
         oMyController.setModel(oModel, "store");
         var oMyViewModel = oMyController.getModel("store");
 
-        oMyViewModel.setProperty(`/user`, "HCK2KOR");
-        assert.strictEqual(oMyController.getUser(), oMyViewModel.getProperty(`/user`));
+        oMyViewModel.setProperty("/user", "HCK2KOR");
+        assert.strictEqual(oMyController.getUser(), oMyViewModel.getProperty("/user"));
     });
 
 

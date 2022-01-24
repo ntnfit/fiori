@@ -43,6 +43,7 @@ sap.ui.define([
 
 			assertions: {
                 iShouldSeeTheMaster: function () {
+					console.log("iShouldSeeTheMaster")
 					return this.waitFor({
                         id: "dynamicPage_purchaseOrder",
                         controlType: "sap.f.DynamicPage",
@@ -54,6 +55,7 @@ sap.ui.define([
 					});
                 },
                 iShouldSeePurchaseOrderTableWithCount: function (iCount) {
+					console.log("iShouldSeePurchaseOrderTableWithCount")
 					return this.waitFor({
 						controlType : "sap.ui.table.Table",
 						id : "tableMaster",

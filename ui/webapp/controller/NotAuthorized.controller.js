@@ -4,7 +4,7 @@ sap.ui.define([
 	function (MyController) {
 		"use strict";
 
-		return MyController.extend("com.bosch.sbs.sbsfioritemplate.ui.controller.NotAuthorized", {
+		return MyController.extend("com.bosch.sbs.gan9hc.ui.controller.NotAuthorized", {
 
 
 			onInit: function () {

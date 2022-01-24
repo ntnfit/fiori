@@ -3,15 +3,15 @@ sap.ui.define([
 ], function (BaseController) {
     "use strict";
 
-    return BaseController.extend("com.bosch.sbs.sbsfioritemplate.ui.controller.MyController", {
+    return BaseController.extend("com.bosch.sbs.gan9hc.ui.controller.MyController", {
 
         // used for app router deployment
-        // remoteHost: `/comboschsbssbsfioritemplateui/backend`, 
+        remoteHost: "/comboschsbsgan9hcui/backend", 
 
         // used for local debugging
-        //remoteHost: `https://sbsfioritemplateservice.cfapps.eu10.hana.ondemand.com`,
+        // remoteHost: "https://piperpurchaseorderservice.cfapps.eu10.hana.ondemand.com",
 
-        remoteHost: `backend`, 
+        // remoteHost: `backend`, 
 
         // Function for store
         $storeDispatch: function (name, payload) {
@@ -19,7 +19,7 @@ sap.ui.define([
             this.getEventBus().publish("storeChannel", name, { payload: this._getter(name) })
         },
 
-        $storeSubscribe: function (name, func) {
+        storeSubscribe: function (name, func) {
             this.getEventBus().subscribe("storeChannel", name, func)
         },
 
@@ -32,12 +32,13 @@ sap.ui.define([
          * @param {string} name - property name of store
          */
         _getter: function (name) {
-            return this.getModel("store").getProperty(`/${name}`);
+            console.log('_getter',name, this.getModel("store").getProperty("/"+name))
+            return this.getModel("store").getProperty("/"+name);
         },
 
         _setter: function (name, value) {
             //debugger;
-            this.getModel("store").setProperty(`/${name}`, value);
+            this.getModel("store").setProperty("/"+name, value);
         },
 
         getUser: function () {
@@ -114,14 +115,14 @@ sap.ui.define([
 
         //http request
         getUserInfo: function () {
-            return this.$httpGet(this.remoteHost + `/authorizations`, null, null, null);
+            return this.$httpGet(this.remoteHost + "/authorizations", null, null, null);
         },
 
         getPurchaseOrdersByFilters: function () {
-            return this.$httpGet(this.remoteHost + `/purchaseorders`, null, null, null);
+            return this.$httpGet(this.remoteHost + "/purchaseorders", null, null, null);
         },
         getVariantList: function () {
-            return this.$httpGet(this.remoteHost + `/view`, null, null, null);
+            return this.$httpGet(this.remoteHost + "/view", null, null, null);
         },
 
         getBillingByFilters: function (searchDto, pageable) {
@@ -137,34 +138,34 @@ sap.ui.define([
             let str = [];
 
             if (!(billingNumbers == null || billingNumbers == undefined || billingNumbers == "" || billingNumbers.length == 0)) {
-                str.push(`billingNumber~${billingNumbers}`)
+                str.push("billingNumber~"+billingNumbers)
             }
             if (!(billingDate == null || billingDate == undefined || billingDate == "" || billingDate.length == 0)) {
-                str.push(`billingDate:${billingDate}`)
+                str.push("billingDate:"+billingDate)
             }
             if (!(status == null || status == undefined || status == "" || status.length == 0)) {
-                str.push(`status:${status}`)
+                str.push("status:"+status)
             }
             if (!(taxRate == null || taxRate == undefined || taxRate == "" || taxRate.length == 0)) {
-                str.push(`taxRate:${taxRate}`)
+                str.push("taxRate:"+taxRate)
             }
             if (ortherFilters.length !== 0) {
-                ortherFilters.forEach(element => {
+                ortherFilters.forEach(function(element){
                     if (!(element.value == null || element.value == undefined || element.value == "" || element.value.length == 0)) {
                         let para = element.key;//首字母小写
                         let formatPara = para.replace(/\b\w+\b/g, function (word) {
                             return word.substring(0, 1).toLowerCase() + word.substring(1);
                         }
                         );
-                        str.push(`${formatPara}:${element.value}`)
+                        str.push(formatPara+":"+element.value)
                     }
-                });
+                }.bind(this));
             }
-            str.push(`salesOrg:${salesOrg}`);
-            let formattedSearch = str.join(`&`);
+            str.push("salesOrg:"+salesOrg);
+            let formattedSearch = str.join("&");
             //console.log("formattedSearch", formattedSearch);
             this.setBillingMasterPageBusy(true);
-            return this.$httpGet(this.remoteHost + `/billing`, null, {
+            return this.$httpGet(this.remoteHost + "/billing", null, {
                 //search: `billingNumber~${billingNumbers}&billingDate:${billingDate}&status:${status}&taxRate:${taxRate}`
                 search: formattedSearch,
                 Limit: pageable.pageSize, //pageSize
@@ -173,16 +174,16 @@ sap.ui.define([
         },
 
         // CommunicateTestData
-        getCommunicateTestData() {
+        getCommunicateTestData: function() {
             return this._getter("CommunicateTestData")
-        },
+        }.bind(this),
 
-        setCommunicateTestData(communicateTestData) {
+        setCommunicateTestData: function(communicateTestData) {
             this._setter("CommunicateTestData", communicateTestData)
-        },
+        }.bind(this),
 
         loadMockbColumnbData: function ( ) {
-            return this.$httpGet(sap.ui.require.toUrl("com/bosch/sbs/sbsfioritemplate/ui/mockdata/bColumns.json"), null, null, null);
+            return this.$httpGet(sap.ui.require.toUrl("com/bosch/sbs/gan9hc/ui/mockdata/bColumns.json"), null, null, null);
         },
 
         setBColumns: function (bColumns) {
@@ -197,7 +198,7 @@ sap.ui.define([
                     break;
                 }
             }
-            this._setter("bColumns", [...columns]);
+            this._setter("bColumns", columns.slice());
         },
 
         getVariants: function () {
@@ -209,19 +210,19 @@ sap.ui.define([
         },
 
         addVariant: function (variantDto) {
-            return this.$httpPost(this.remoteHost + `/view`, null, null, variantDto, null);
+            return this.$httpPost(this.remoteHost + "/view", null, null, variantDto, null);
         },
 
         updateVariant: function (id, variantDto) {
-            return this.$httpPatch(this.remoteHost + `/view`, [id], null, variantDto, null);
+            return this.$httpPatch(this.remoteHost + "/view", [id], null, variantDto, null);
         },
 
         deleteVariant: function (id) {
-            return this.$httpDelete(this.remoteHost + `/view`, [id], null, null, null);
+            return this.$httpDelete(this.remoteHost + "/view", [id], null, null, null);
         },
 
         fetchTableData: function(dto) {
-            return this.$httpPost(this.remoteHost + `/table/fetch`, null, null, dto, null);
+            return this.$httpPost(this.remoteHost + "/table/fetch", null, null, dto, null);
         },
     });
 });

@@ -20,7 +20,7 @@ sap.ui.define([
 	function (MyController, JSONModel, Log, MessageToast, DateFormat, jQuery, ValueState, Dialog, DialogType, Button, ButtonType, Text, SearchField, Fragment, Form, Formatter, MasterDialog) {
 		'use strict';
 		let that;
-		return MyController.extend("com.bosch.sbs.sbsfioritemplate.ui.controller.BillingPage_Master", {
+		return MyController.extend("com.bosch.sbs.gan9hc.ui.controller.BillingPage_Master", {
 			formatter: Formatter,
 
 			onInit: function () {

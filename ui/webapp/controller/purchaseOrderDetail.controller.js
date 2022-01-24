@@ -5,7 +5,7 @@ sap.ui.define([
 function (MyController,JSONModel) {
     'use strict';
 
-    return MyController.extend("com.bosch.sbs.sbsfioritemplate.ui.controller.purchaseOrderDetail", {
+    return MyController.extend("com.bosch.sbs.gan9hc.ui.controller.purchaseOrderDetail", {
 
         onInit: function () {
             console.log("purchaseOrderDetail onInit: ");
@@ -13,17 +13,20 @@ function (MyController,JSONModel) {
             oRouter.getRoute("purchaseorderDetail").attachPatternMatched(this._onObjectMatched, this);
         },
 
-        _onObjectMatched: function () {
+        _onObjectMatched: function (oEvent) {
             let selectedPurchaseOrderId = this.getDetailId();
             console.log("Before selectedPurchaseOrderId: ", selectedPurchaseOrderId);
             const oRouter = this.getRouter();
             if(selectedPurchaseOrderId === null){
                 console.log("Direct access router for detail page.");
-                let selected = oRouter.getHashChanger().hash.substring(19);
-                this.setDetailId(selected);
-                selectedPurchaseOrderId = this.getDetailId();
-                
-                this.setLayout("TwoColumnsMidExpanded");
+                const selected = oEvent.getParameter("arguments").detailId;
+                if(selected){
+                    this.setDetailId(selected);
+                    selectedPurchaseOrderId = this.getDetailId();
+                    this.setLayout("TwoColumnsMidExpanded");
+                } else {
+                    this.handleClose();
+                } 
             }
         },
 

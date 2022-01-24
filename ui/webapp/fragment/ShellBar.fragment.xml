@@ -19,9 +19,9 @@
 			<Text class="hello" text="{store>/userName}"/>
 			<!--Text class="sapUiTinyMargin" text="{store>/salesOrg}"/-->
 			<!--Button class="i18n-btn" icon="sap-icon://globe" type="Transparent" press="onLanguageSelectDialogShow"/-->
-			<Button visible="{store>/hasLogin}" class="user-menu-btn customize-btn" text="" icon="sap-icon://employee" type="Transparent" press="onUserMenuDialogShow">
+			<Button id="usermenubtn" visible="{store>/hasLogin}" class="user-menu-btn customize-btn" text="" icon="sap-icon://employee" type="Transparent" press="onUserMenuDialogShow">
 				<dependents>
-					<core:Fragment fragmentName="com.bosch.sbs.sbsfioritemplate.ui.fragment.UserMenu" type="XML"/>
+					<core:Fragment fragmentName="com.bosch.sbs.gan9hc.ui.fragment.UserMenu" type="XML"/>
 				</dependents>
 			</Button>
 		</FlexBox>

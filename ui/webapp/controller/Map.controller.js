@@ -3,7 +3,7 @@ sap.ui.define([
 ], function (MyController) {
 	"use strict";
 
-	return MyController.extend("com.bosch.sbs.sbsfioritemplate.ui.controller.Map", {
+	return MyController.extend("com.bosch.sbs.gan9hc.ui.controller.Map", {
 		onInit: function () {
 
 		},
